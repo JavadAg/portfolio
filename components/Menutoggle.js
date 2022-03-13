@@ -1,6 +1,7 @@
 import React from "react"
 
 const MenuToggle = ({ open, menu, setOpen, setMenu }) => {
+  console.log(open)
   return (
     <div
       onClick={() => (setOpen(!open), setMenu(open ? "Menu" : "Close"))}

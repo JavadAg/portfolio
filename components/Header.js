@@ -37,7 +37,7 @@ const Header = () => {
   const [menu, setMenu] = useState("Menu")
   const [id, setId] = useState("Home")
   const [visible, setVisible] = useState(false)
-
+  console.log(open)
   const toggleVisible = () => {
     const position = window.scrollY
 
@@ -58,7 +58,7 @@ const Header = () => {
       behavior: "smooth"
     })
   }
-  console.log(id)
+
   return (
     <div className="relative ">
       <div
@@ -101,8 +101,11 @@ const Header = () => {
                 className="relative flex p-5 leading-4 flex-row justify-center items-center"
               >
                 <a
-                  value={menu.text}
-                  onClick={() => setOpen(false)}
+                  onClick={() => (
+                    setOpen(!open),
+                    setMenu(open ? "Menu" : "Close"),
+                    setId(`${menu.text}`)
+                  )}
                   href={`#${menu.text}`}
                   className={`relative xs:text-4xl sm:text-5xl md:text-7xl lg:text-7xl text-7xl font-extrabold bg-gradient-to-r from-[#82A4A2] via-3 to-223541  bg-200% -bg-100% transition-all duration-300  ease-in-out
 
@@ -115,7 +118,7 @@ const Header = () => {
                   before:bg-[#466671] before:transition-all before:duration-300 before:ease-in-out 
                   xs:before:bottom-0 sm:before:bottom-0
                   hover:bg-0% hover:before:w-full
-
+                  ${id == `${menu.text}` ? "bg-0% before:w-full " : ""}
                   
                   `}
                 >
