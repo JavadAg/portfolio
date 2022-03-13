@@ -58,14 +58,15 @@ const Header = () => {
       behavior: "smooth"
     })
   }
-
+  console.log(id)
   return (
     <div className="relative ">
       <div
         style={{ zIndex: 3 }}
-        className=" fixed flex justify p-2 justify-between w-full h-16 items-center bg-opacity-30 bg-slate-100"
+        className=" fixed flex justify p-2 justify-between w-full h-16 items-center bg-opacity-30 backdrop-blur-sm bg-slate-100"
       >
         <a
+          onClick={() => setId("Home")}
           href={"#Home"}
           className="flex h-full w-16 flex-row justify-around items-center"
         >
@@ -146,7 +147,7 @@ const Header = () => {
               <span className="relative h-6 w-6  block   group-first:-translate-y-8 duration-500 group-first:text-[#62858A]">
                 {<menu.icon />}
               </span>
-              <span className="absolute font-semibold duration-100 opacity-0 bg-[#62858A] text-white px-2 py-1 text-xs tracking-widest rounded-3xl group-last:opacity-100 group-last:-translate-y-0">
+              <span className="absolute flex justify-center items-center font-semibold duration-100 opacity-0 bg-[#62858A] text-white px-2 py-1 text-xs tracking-widest rounded-3xl group-last:opacity-100 group-last:-translate-y-0">
                 {menu.text}
               </span>
               <div
