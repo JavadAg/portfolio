@@ -30,7 +30,7 @@ const AboutR = () => {
       </div>
       <div
         id="About"
-        className="relative mx-64 my-32 xs:mx-4 xs:my-16 sm:mx-6 sm:my-16 md:mx-16 md:my-24 lg:mx-24 lg:my-36"
+        className="relative mx-64 my-32 xs:mx-4 xs:my-16 sm:mx-6 sm:my-16 md:mx-16 md:my-24 lg:mx-24 lg:my-36 "
       >
         <motion.div
           whileInView={{ opacity: [0, 1] }}

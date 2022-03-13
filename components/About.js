@@ -77,21 +77,21 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          whileInView={{ x: [100, 0], opacity: [0, 1] }}
+          whileInView={{ y: [50, 0], opacity: [0, 1] }}
           transition={{ duration: 1 }}
-          className="pt-20 flex flex-row space-x-6"
+          className="pt-20 flex flex-row justify-center items-center space-x-6 xs:space-x-3 xs:text-sm"
         >
           <h5>
-            Read
+            Read{" "}
             <a className="font-bold " href="#About">
               about me
             </a>
           </h5>
           <h5>
-            Leave me a
+            Leave me a{" "}
             <a className="font-bold" href="#message">
               message
-            </a>{" "}
+            </a>
             :)
           </h5>
         </motion.div>

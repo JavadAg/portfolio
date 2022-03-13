@@ -59,10 +59,6 @@ const Header = () => {
     })
   }
 
-  const onclickhandler = () => {
-    setOpen(false), setId(`${menu.text}`)
-  }
-  console.log(id)
   return (
     <div className="relative ">
       <div
@@ -104,9 +100,8 @@ const Header = () => {
                 className="relative flex p-5 leading-4 flex-row justify-center items-center"
               >
                 <a
-                  onClick={() => {
-                    setId(`${menu.text}`)
-                  }}
+                  value={menu.text}
+                  onClick={() => setOpen(false)}
                   href={`#${menu.text}`}
                   className={`relative xs:text-4xl sm:text-5xl md:text-7xl lg:text-7xl text-7xl font-extrabold bg-gradient-to-r from-[#82A4A2] via-3 to-223541  bg-200% -bg-100% transition-all duration-300  ease-in-out
 
@@ -120,7 +115,7 @@ const Header = () => {
                   xs:before:bottom-0 sm:before:bottom-0
                   hover:bg-0% hover:before:w-full
 
-                  ${id === `${menu.text}` ? "bg-0% before:w-full " : ""}
+                  
                   `}
                 >
                   {menu.text}
@@ -136,7 +131,7 @@ const Header = () => {
 
       <ul
         style={{ zIndex: 1 }}
-        className="visible lg:invisible xl:invisible mx-auto inset-x-5 flex fixed justify-center xs:p-4 sm:p-2 items-center bottom-2 h-14 bg-slate-200 rounded-xl"
+        className="visible lg:invisible xl:invisible mx-auto inset-x-5 flex fixed justify-center xs:p-4 sm:p-2 items-center bottom-2 h-14 bg-[#d2e0d9] rounded-xl"
       >
         {menus.map((menu) => (
           <li key={`link=${menu.text}`} className=" w-11/12 p-1 z-10 ">
@@ -155,9 +150,9 @@ const Header = () => {
                 {menu.text}
               </span>
               <div
-                className="before:content-[''] before:h-6 before:w-6 before:bg-transparent before:shadow-customleft   before:shadow-slate-200 before:absolute before:rounded-full before:-left-18px before:top-1
-              after:content-[''] after:h-6 after:w-6  after:bg-transparent after:shadow-customright   after:shadow-slate-200 after:absolute after:rounded-full after:-right-18px after:top-1
-              absolute group-last:duration-100 rounded-full bg-white -z-10 -top-2/4 xs:w-16 xs:h-16 w-20 h-20 opacity-0 group-last:bg-slate-200  group-last:opacity-100 "
+                className="before:content-[''] before:h-6 before:w-6 before:bg-transparent before:shadow-customleft   before:shadow-[#d2e0d9] before:absolute before:rounded-full before:-left-18px before:top-1
+              after:content-[''] after:h-6 after:w-6  after:bg-transparent after:shadow-customright   after:shadow-[#d2e0d9] after:absolute after:rounded-full after:-right-18px after:top-1
+              absolute group-last:duration-100 rounded-full bg-white -z-10 -top-2/4 xs:w-16 xs:h-16 w-20 h-20 opacity-0 group-last:bg-[#d2e0d9]  group-last:opacity-100 "
               ></div>
             </a>
           </li>
