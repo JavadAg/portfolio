@@ -67,6 +67,14 @@ module.exports = {
         "0%": "0%"
       },
       keyframes: {
+        moveforever: {
+          "0%": {
+            transform: "translate3d(-90px, 0, 0)"
+          },
+          "100%": {
+            transform: "translate3d(85px, 0, 0)"
+          }
+        },
         rubberband1: {
           "0%": {
             transform: "scale3d(1, 1 , 1)"
@@ -143,6 +151,7 @@ module.exports = {
         }
       },
       animation: {
+        moveforever: "moveforever 2s cubic-bezier(.55,.5,.45,.5) infinite",
         rubberband: "rubberband1 0.8s both 1",
         opacityscroll: "opacityS 0.5s both 1 ",
         opacityscrollinvis: "opacitySI 0.5s both 1 ",
