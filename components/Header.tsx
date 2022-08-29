@@ -1,34 +1,23 @@
 import React, { useState, useEffect } from "react"
-import {
-  HomeIcon,
-  AnnotationIcon,
-  PhotographIcon,
-  IdentificationIcon,
-  ClipboardListIcon
-} from "@heroicons/react/outline"
+
 import Menutoggle from "./Menutoggle"
 import { motion } from "framer-motion"
 
 const menus = [
   {
-    text: "About",
-    icon: IdentificationIcon
+    text: "About"
   },
   {
-    text: "Skills",
-    icon: ClipboardListIcon
+    text: "Skills"
   },
   {
-    text: "Home",
-    icon: HomeIcon
+    text: "Home"
   },
   {
-    text: "Works",
-    icon: PhotographIcon
+    text: "Works"
   },
   {
-    text: "Contact",
-    icon: AnnotationIcon
+    text: "Contact"
   }
 ]
 
@@ -145,7 +134,7 @@ const Header = () => {
                   `}
             >
               <span className="relative h-6 w-6  block   group-first:-translate-y-8 duration-500 group-first:text-[#62858A]">
-                {<menu.icon />}
+                xxx
               </span>
               <span className="absolute flex justify-center items-center font-semibold duration-100 opacity-0 bg-[#62858A] text-white px-2 py-1 text-xs tracking-widest rounded-3xl group-last:opacity-100 group-last:-translate-y-0">
                 {menu.text}
