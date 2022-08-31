@@ -1,0 +1,59 @@
+.custom_cursor {
+  width: 100%;
+  height: 100vh;
+  background: white;
+  display: grid;
+  justify-content: center;
+  cursor: none;
+  .cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+    background: #4d4d4d;
+    transition: all 0.1s ease-in-out;
+    transition-property: width, height, border;
+    will-change: width, height, transform, border;
+    pointer-events: none;
+    &.fb,
+    &.insta,
+    &.twitter {
+      height: 60px;
+      width: 60px;
+      background: transparent;
+    }
+    &.fb {
+      border: solid 5px #3b5998;
+    }
+    &.insta {
+      border: solid 5px #c13584;
+    }
+    &.twitter {
+      border: solid 5px #1da1f2;
+    }
+  }
+  .icons_wrapper {
+    width: 40%;
+    height: 100%;
+    display: grid;
+    place-items: center center;
+    grid-template-columns: 1fr 1fr 1fr;
+    span {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center center;
+      &:hover {
+        &.fab {
+          color: var(--font-black);
+        }
+      }
+    }
+    .fab {
+      color: #914b4b;
+      font-size: 32px;
+    }
+  }
+}

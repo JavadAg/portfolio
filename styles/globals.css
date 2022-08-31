@@ -1,19 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  html {
-    font-family: Comfortaa, system-ui, sans-serif;
-  }
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap");
 html,
 body {
-  scroll-behavior: smooth;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
+  padding: 0;
+  margin: 0;
+  font-family: "Heebo", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  /*   cursor: none;
+ */
 }
