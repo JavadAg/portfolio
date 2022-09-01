@@ -8,9 +8,14 @@ import styles from "../styles/Home.module.scss"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import CustomCursor from "../components/CustomCursor/CustomCursor"
+import dynamic from "next/dynamic"
 
 export default function Home() {
-  /*   const [mousePosition, setMousePosition] = useState({
+  const Canvas = dynamic(() => import("../components/Canvas/Canvas"), {
+    ssr: false
+  })
+
+  /* const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0
   })
@@ -51,22 +56,25 @@ export default function Home() {
 
   return (
     <div
-      className={styles.home}
-      /* onMouseEnter={textEnter}
+
+    /* className={styles.home}
+      onMouseEnter={textEnter}
       onMouseLeave={textLeave} */
     >
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <Header />
       <About />
+
       <Skills />
       <Works />
       <Contact />
       <Footer />
-      {/* <motion.div
+      {/*  <motion.div
         className={styles.cursor}
         variants={variants}
         animate={cursorVariant}
       /> */}
+      <Canvas />
     </div>
   )
 }

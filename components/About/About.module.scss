@@ -1,28 +1,18 @@
 .about_container {
   position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 100vw;
   background-color: black;
-  overflow-x: hidden;
   color: aliceblue;
   height: calc(100vh - 120px);
 
   .about_me {
-    z-index: 0;
+    z-index: 1;
+    overflow: hidden;
     font-size: 2rem;
-  }
-
-  .canvas {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    position: absolute;
-    display: block;
   }
 }

@@ -27,7 +27,7 @@ const CustomCursor = () => {
   const containerRef = useRef(null)
   const iconRefs = useRef(new Array())
 
-  /* const onMouseMove = (e: any) => {
+  const onMouseMove = (e: any) => {
     if (hoveringIcon) return
     const { left, top } = containerRef.current.getBoundingClientRect()
     const newX = e.clientX - left
@@ -41,7 +41,7 @@ const CustomCursor = () => {
       1 - absDeltaX * 0.005
     ])
     setMousePosition({ x: newX, y: newY })
-  } */
+  }
 
   useEffect(() => {
     const mouseMove = (e: any) => {
@@ -76,7 +76,7 @@ const CustomCursor = () => {
     <div
       className={styles.custom_cursor}
       ref={containerRef}
-      /*  onMouseMove={onMouseMove} */
+      onMouseMove={onMouseMove}
     >
       <motion.div
         className={`${styles.cursor} ${
