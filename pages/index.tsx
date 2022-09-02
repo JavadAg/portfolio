@@ -6,9 +6,10 @@ import Skills from "../components/Skills/Skills"
 import Works from "../components/Works/Works"
 import styles from "../styles/Home.module.scss"
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { FC, ReactComponentElement, useEffect, useRef, useState } from "react"
 import CustomCursor from "../components/CustomCursor/CustomCursor"
 import dynamic from "next/dynamic"
+import Hero from "../components/Hero/Hero"
 
 export default function Home() {
   const Canvas = dynamic(() => import("../components/Canvas/Canvas"), {
@@ -56,15 +57,15 @@ export default function Home() {
 
   return (
     <div
-
-    /* className={styles.home}
-      onMouseEnter={textEnter}
+      className={styles.home_wrapper}
+      /* onMouseEnter={textEnter}
       onMouseLeave={textLeave} */
     >
       {/* <CustomCursor /> */}
+      <Canvas />
       <Header />
+      <Hero />
       <About />
-
       <Skills />
       <Works />
       <Contact />
@@ -74,7 +75,6 @@ export default function Home() {
         variants={variants}
         animate={cursorVariant}
       /> */}
-      <Canvas />
     </div>
   )
 }

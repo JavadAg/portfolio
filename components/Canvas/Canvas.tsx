@@ -1,19 +1,26 @@
 import { useEffect, useRef } from "react"
+import {
+  ColorVars,
+  Nodes,
+  Points,
+  PointValues,
+  Positions
+} from "../../types/canvas.types"
 import styles from "./Canvas.module.scss"
 
 const Canvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  var ctx,
-    colorVars = {
+  let ctx: CanvasRenderingContext2D,
+    colorVars: ColorVars = {
       phase: Math.random() * 2 * Math.PI,
       amplitude: 85,
       frequency: 0.0015,
       offset: 285
     },
-    pos = {},
-    points = [],
-    pointValues = {
+    pos: Positions = {},
+    points: Points[] = [],
+    pointValues: PointValues = {
       friction: 0.5,
       trails: 20,
       size: 50,
@@ -23,22 +30,11 @@ const Canvas = () => {
 
   useEffect(() => {
     ctx = canvasRef.current.getContext("2d")
-    ctx.running = true
-    ctx.frame = 1
-
     document.addEventListener("mousemove", onMousemove)
     document.addEventListener("touchstart", onMousemove)
     document.body.addEventListener("orientationchange", resizeCanvas)
     window.addEventListener("resize", resizeCanvas)
-    window.addEventListener("focus", () => {
-      if (!ctx.running) {
-        ctx.running = true
-        render()
-      }
-    })
-    window.addEventListener("blur", () => {
-      ctx.running = true
-    })
+    window.addEventListener("focus", () => {})
     resizeCanvas()
   }, [])
 
@@ -47,18 +43,18 @@ const Canvas = () => {
     ctx.canvas.height = window.innerHeight
   }
 
-  const getColor = (item) => {
+  const getColor = (item: ColorVars) => {
     item.phase = item.phase + item.frequency
-    let colorCode = {}
+    let colorCode: number
     colorCode = item.offset + Math.sin(item.phase) * item.amplitude
 
     return colorCode
   }
 
-  const createPoints = (item) => {
+  const createPoints = (item: Points) => {
     var spring = item.spring + 0.1 * Math.random() - 0.05
     var friction = pointValues.friction + 0.01 * Math.random() - 0.005
-    var nodes = []
+    var nodes: Nodes[] = []
     for (var t, n = 0; n < pointValues.size; n++) {
       t = { x: 0, y: 0, vy: 0, vx: 0 }
       t.x = pos.x
@@ -69,66 +65,72 @@ const Canvas = () => {
     return { spring, friction, nodes }
   }
 
-  const updatePoints = (point) => {
-    var e = point.spring,
-      t = point.nodes[0],
+  const updatePoints = (point: Points) => {
+    let spring = point.spring,
+      node = point.nodes[0],
       nodes = []
-    t.vx += (pos.x - t.x) * e
-    t.vy += (pos.y - t.y) * e
+    node.vx += (pos.x - node.x) * spring
+    node.vy += (pos.y - node.y) * spring
     for (var n, i = 0, a = point.nodes.length; i < a; i++) {
-      ;(t = point.nodes[i]),
-        0 < i &&
-          ((n = point.nodes[i - 1]),
-          (t.vx += (n.x - t.x) * e),
-          (t.vy += (n.y - t.y) * e),
-          (t.vx += n.vx * pointValues.dampening),
-          (t.vy += n.vy * pointValues.dampening)),
-        (t.vx *= point.friction),
-        (t.vy *= point.friction),
-        (t.x += t.vx),
-        (t.y += t.vy),
-        (e *= pointValues.tension),
-        nodes.push(t)
+      node = point.nodes[i]
+      if (0 < i) {
+        n = point.nodes[i - 1]
+        node.vx += (n.x - node.x) * spring
+        node.vy += (n.y - node.y) * spring
+        node.vx += n.vx * pointValues.dampening
+        node.vy += n.vy * pointValues.dampening
+      }
+      node.vx *= point.friction
+      node.vy *= point.friction
+      node.x += node.vx
+      node.y += node.vy
+      spring *= pointValues.tension
+      nodes.push(node)
     }
 
-    return { spring: e, friction: point.friction, nodes }
+    return { spring, friction: point.friction, nodes }
   }
 
-  const drawPoints = (point) => {
-    var e,
-      t,
+  const drawPoints = (point: Points) => {
+    let node: Nodes,
+      nextNode: Nodes,
       n = point.nodes[0].x,
       i = point.nodes[0].y
     ctx.beginPath()
     ctx.moveTo(n, i)
     for (var a = 1, o = point.nodes.length - 2; a < o; a++) {
-      e = point.nodes[a]
-      t = point.nodes[a + 1]
-      n = 0.5 * (e.x + t.x)
-      i = 0.5 * (e.y + t.y)
-      ctx.quadraticCurveTo(e.x, e.y, n, i)
+      node = point.nodes[a]
+      nextNode = point.nodes[a + 1]
+      n = 0.5 * (node.x + nextNode.x)
+      i = 0.5 * (node.y + nextNode.y)
+      ctx.quadraticCurveTo(node.x, node.y, n, i)
     }
-    e = point.nodes[a]
-    t = point.nodes[a + 1]
-    ctx.quadraticCurveTo(e.x, e.y, t.x, t.y)
+    node = point.nodes[a]
+    nextNode = point.nodes[a + 1]
+    ctx.quadraticCurveTo(node.x, node.y, nextNode.x, nextNode.y)
     ctx.stroke()
     ctx.closePath()
   }
 
-  const onMousemove = (e) => {
+  const onMousemove = (e: MouseEvent | TouchEvent) => {
     function addPoint() {
       for (var i = 0; i < pointValues.trails; i++) {
         points.push(
-          new createPoints({ spring: 0.45 + (i / pointValues.trails) * 0.025 })
+          createPoints({ spring: 0.45 + (i / pointValues.trails) * 0.025 })
         )
       }
+      console.log(points)
     }
-    function updatePos(e) {
-      e.touches
-        ? ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY))
-        : ((pos.x = e.clientX), (pos.y = e.clientY))
+    function updatePos(e: MouseEvent | TouchEvent) {
+      if (e instanceof TouchEvent) {
+        pos.x = e.touches[0].pageX
+        pos.y = e.touches[0].pageY
+      } else {
+        pos.x = e.clientX
+        pos.y = e.clientY
+      }
     }
-    function touch(e) {
+    function touch(e: TouchEvent) {
       1 == e.touches.length &&
         ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY))
     }
@@ -143,31 +145,21 @@ const Canvas = () => {
   }
 
   const render = () => {
-    if (ctx.running) {
-      ctx.globalCompositeOperation = "source-over"
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-      ctx.globalCompositeOperation = "lighter"
-      ctx.strokeStyle =
-        "hsla(" + Math.round(getColor(colorVars)) + ",90%,50%,0.10)"
-      ctx.lineWidth = 4
-      for (var e, t = 0; t < pointValues.trails; t++) {
-        e = updatePoints(points[t])
-        drawPoints(e)
-      }
-      ctx.frame++
-      window.requestAnimationFrame(render)
+    ctx.globalCompositeOperation = "source-over"
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+    ctx.globalCompositeOperation = "lighter"
+    ctx.strokeStyle =
+      "hsla(" + Math.round(getColor(colorVars)) + ",90%,50%,0.10)"
+    ctx.lineWidth = 1
+    for (var point: Points, t = 0; t < pointValues.trails; t++) {
+      point = updatePoints(points[t])
+      drawPoints(point)
     }
+
+    window.requestAnimationFrame(render)
   }
 
-  return (
-    <canvas
-      id="canvas"
-      /*  width={window.innerWidth}
-      height={window.innerHeight} */
-      ref={canvasRef}
-      className={styles.canvas}
-    ></canvas>
-  )
+  return <canvas id="canvas" ref={canvasRef} className={styles.canvas}></canvas>
 }
 
 export default Canvas
