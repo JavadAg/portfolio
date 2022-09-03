@@ -10,6 +10,8 @@ import { FC, ReactComponentElement, useEffect, useRef, useState } from "react"
 import CustomCursor from "../components/CustomCursor/CustomCursor"
 import dynamic from "next/dynamic"
 import Hero from "../components/Hero/Hero"
+import SocialMenu from "../components/SocialMenu/SocialMenu"
+import Navbar from "../components/Navbar/Navbar"
 
 export default function Home() {
   const Canvas = dynamic(() => import("../components/Canvas/Canvas"), {
@@ -62,6 +64,7 @@ export default function Home() {
       onMouseLeave={textLeave} */
     >
       {/* <CustomCursor /> */}
+
       <Canvas />
       <Header />
       <Hero />
@@ -75,6 +78,8 @@ export default function Home() {
         variants={variants}
         animate={cursorVariant}
       /> */}
+      <SocialMenu />
+      <Navbar />
     </div>
   )
 }

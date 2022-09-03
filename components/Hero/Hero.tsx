@@ -4,9 +4,12 @@ import { useRouter } from "next/router"
 
 const Hero = () => {
   const router = useRouter()
-  const textRef = useRef<HTMLSpanElement>()
+
+  let textRef = useRef<HTMLSpanElement>()
+
   /*   const [visible, setVisible] = useState(false)
    */
+
   let words = ["Developer", "Gamer", "Photographer"],
     part,
     i = 0,
@@ -47,7 +50,7 @@ const Hero = () => {
       }
 
       part = words[i].slice(0, offset)
-      textRef.current.textContent = part
+      textRef.current!.textContent = part
     }, speed)
   }
 

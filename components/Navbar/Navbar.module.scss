@@ -1,0 +1,38 @@
+.navbar_wrapper {
+  display: flex;
+  position: fixed;
+  bottom: 0px;
+  top: 0px;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  right: 20px;
+  color: rgb(184, 184, 184);
+  width: 70px;
+  .navbar {
+    display: flex;
+    list-style: none;
+    position: relative;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+    align-items: center;
+    flex-direction: column;
+
+    li:hover {
+      color: teal;
+      transition: all 500ms ease-in-out;
+    }
+  }
+
+  .navbar::after {
+    content: "";
+    width: 1px;
+    height: 330px;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    margin: 0 auto;
+    background-color: rgb(60, 60, 60);
+  }
+}

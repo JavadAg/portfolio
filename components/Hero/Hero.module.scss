@@ -2,17 +2,15 @@ $slides: 3;
 $typing-duration: 1.5s;
 $tab-letters: 9 5 12;
 $slider-font-size: 3rem;
-$background: #0f0f14;
-$text-color: rgb(223, 225, 226);
-$text-color_secondary: rgb(145, 145, 145);
 
 .hero_wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $background;
-  color: $text-color;
+  background-color: var(--color-background);
+  transition: all 300ms ease-in-out;
+  color: var(--color-text);
   text-align: start;
   width: 100%;
   height: 100vh;
@@ -38,7 +36,8 @@ $text-color_secondary: rgb(145, 145, 145);
       > span:nth-child(1) {
         z-index: 4;
         font-size: 2.8rem;
-        color: $text-color_secondary;
+        color: var(--color-text_secondary);
+        transition: color 300ms ease-in-out;
         font-weight: 700;
         margin-left: 100px;
       }
@@ -48,9 +47,10 @@ $text-color_secondary: rgb(145, 145, 145);
         border-right: 0.15em solid orange;
         background-color: red;
         background-image: linear-gradient(
-          43deg,
-          rgb(134, 52, 197) 0%,
-          rgb(131, 27, 127) 100%
+          40deg,
+          #aa4290 -10%,
+          rgb(96, 30, 202) 50%,
+          #868afa 100%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -79,7 +79,8 @@ $text-color_secondary: rgb(145, 145, 145);
   }
 
   .hero_texts > span:nth-child(1) {
-    color: $text-color_secondary;
+    color: var(--color-text_secondary);
+    transition: color 300ms ease-in-out;
   }
 
   .hero_texts > span:nth-child(2) {
@@ -89,14 +90,53 @@ $text-color_secondary: rgb(145, 145, 145);
   }
 
   > button {
-    width: 240px;
+    width: 200px;
+    position: relative;
     z-index: 4;
-    /*position: relative; */
+    border: none;
+    font-weight: 700;
+    transition: all 300ms ease-in-out;
     border-radius: 4px;
-    color: azure;
+    color: var(--color-button_text);
     border-color: rgb(67, 67, 67);
-    background-color: $background;
-    height: 50px;
+    background-color: var(--color-button);
+    height: 40px;
+  }
+
+  > button::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(
+      40deg,
+      #aa4290 -10%,
+      rgb(96, 30, 202) 50%,
+      #868afa 100%
+    );
+    transform: translate3d(0px, 1px, 0) scale(1.01);
+    filter: blur(30px);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: inherit;
+  }
+  > button:hover::before {
+    opacity: 0.8;
+  }
+
+  > button::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    border-radius: inherit;
   }
 
   .arrows {
