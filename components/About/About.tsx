@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import React, { forwardRef, useEffect } from "react"
 import styles from "./About.module.scss"
-import Image from "next/image"
+import Image from "next/future/image"
 import aboutPic from "../../public/my_photo.jpg"
 import { motion } from "framer-motion"
 
@@ -24,11 +24,10 @@ const About = () => {
           whileHover={{
             scale: 1.02
           }}
-          
           transition={{ type: "spring", duration: 1, stiffness: 300 }}
           className={styles.about_photo}
         >
-          <Image width={0} height={0} layout="responsive" src={aboutPic} />
+          <Image src={aboutPic} />
         </motion.div>
       </div>
     </div>

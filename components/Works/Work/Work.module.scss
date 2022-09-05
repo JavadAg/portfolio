@@ -1,0 +1,33 @@
+.single_item_expanded {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .left_column {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .right_column {
+    width: 100px;
+    height: 100px;
+    > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.single_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+}

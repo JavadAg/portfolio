@@ -31,7 +31,7 @@ const Contact = () => {
       id="Contact"
       className="mx-64 my-32 xs:mx-4 xs:my-16 sm:mx-6 sm:my-16 md:mx-16 md:my-24 lg:mx-24 lg:my-36"
     >
-      <motion.div
+      {/* <motion.div
         whileInView={{ opacity: [0, 1] }}
         transition={{ duration: 0.5, type: "spring" }}
         className="relative block before:content-[''] before:h-0.5 before:w-12 before:bg-black before:absolute before:rounded-2xl before:left-0 before:top-2 pl-14 text-xs capitalize"
@@ -146,7 +146,7 @@ const Contact = () => {
             <div className="md:w-2/3"></div>
           </div>
         </form>
-      </motion.div>
+      </motion.div> */}
     </div>
   )
 }
