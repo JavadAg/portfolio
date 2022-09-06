@@ -119,13 +119,12 @@ const Canvas = () => {
           createPoints({ spring: 0.45 + (i / pointValues.trails) * 0.025 })
         )
       }
-      console.log(points)
     }
     function updatePos(e: MouseEvent | TouchEvent) {
-      if (e instanceof TouchEvent) {
+      if (typeof TouchEvent !== "undefined" && e instanceof TouchEvent) {
         pos.x = e.touches[0].pageX
         pos.y = e.touches[0].pageY
-      } else {
+      } else if (e instanceof MouseEvent) {
         pos.x = e.clientX
         pos.y = e.clientY
       }

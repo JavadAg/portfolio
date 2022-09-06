@@ -1,7 +1,5 @@
 import About from "../components/About/About"
 import Contact from "../components/Contact/Contact"
-import Footer from "../components/Footer/Footer"
-import Header from "../components/Header/Header"
 import Skills from "../components/Skills/Skills"
 import Works from "../components/Works/Works"
 import styles from "../styles/Home.module.scss"
@@ -10,6 +8,8 @@ import { FC, ReactComponentElement, useEffect, useRef, useState } from "react"
 import CustomCursor from "../components/CustomCursor/CustomCursor"
 import dynamic from "next/dynamic"
 import Hero from "../components/Hero/Hero"
+import Header from "../components/Header/Header"
+import Footer from "../components/Footer/Footer"
 import SocialMenu from "../components/SocialMenu/SocialMenu"
 import Navbar from "../components/Navbar/Navbar"
 
@@ -58,28 +58,27 @@ export default function Home() {
   const textLeave = () => setCursorVariant("default") */
 
   return (
-    <div
-      className={styles.home_wrapper}
-      /* onMouseEnter={textEnter}
-      onMouseLeave={textLeave} */
-    >
-      {/* <CustomCursor /> */}
-
-      <Canvas />
+    <div className={styles.layout}>
       <Header />
-      <Hero />
-      <About />
-      <Skills />
-      <Works />
-      <Contact />
-      <Footer />
-      {/*  <motion.div
+      <main className={styles.main}>
+        <SocialMenu />
+        {/*  onMouseEnter={textEnter}
+        onMouseLeave={textLeave} */}
+        {/* <CustomCursor /> */}
+        <Canvas />
+        <Hero />
+        <About />
+        <Skills />
+        <Works />
+        <Contact />
+        {/*  <motion.div
         className={styles.cursor}
         variants={variants}
         animate={cursorVariant}
       /> */}
-      <SocialMenu />
-      <Navbar />
+        <Navbar />
+      </main>
+      <Footer />
     </div>
   )
 }

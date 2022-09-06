@@ -17,9 +17,9 @@ import styles from "./Skills.module.scss"
 const Skills = () => {
   const dragContainerRef = useRef()
   return (
-    <motion.div className={styles.skills_wrapper}>
+    <motion.div className={styles.skills_container}>
       <span>Skills</span>
-      <motion.div ref={dragContainerRef} className={styles.skills_carousel}>
+      <motion.div ref={dragContainerRef} className={styles.skills_wrapper}>
         <motion.div drag dragConstraints={dragContainerRef}>
           <Js_logo className={styles.carousel_item} />
         </motion.div>
