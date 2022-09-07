@@ -117,7 +117,7 @@ $slider-font-size: 3rem;
       #868afa 100%
     );
     transform: translate3d(0px, 1px, 0) scale(1.01);
-    filter: blur(30px);
+    filter: blur(8px);
     opacity: 0;
     transition: opacity 0.3s;
     border-radius: inherit;

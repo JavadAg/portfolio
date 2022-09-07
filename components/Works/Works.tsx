@@ -12,17 +12,15 @@ const Works = () => {
   return (
     <div className={styles.works_wrapper}>
       <span>Works</span>
-      <motion.div className={styles.works}>
-       
-          {works.map((work, index) => (
-            <Work
-              key={work.id}
-              work={work}
-              isExpanded={isExpanded}
-              setIsExpanded={setIsExpanded}
-            />
-          ))}
-       
+      <motion.div layout initial={false}  className={styles.works}>
+        {works.map((work, index) => (
+          <Work
+            key={work.id}
+            work={work}
+            isExpanded={isExpanded}
+            setIsExpanded={setIsExpanded}
+          />
+        ))}
       </motion.div>
     </div>
   )
