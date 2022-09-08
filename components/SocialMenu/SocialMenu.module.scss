@@ -30,4 +30,8 @@
     margin: 0 auto;
     background-color: rgb(60, 60, 60);
   }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }

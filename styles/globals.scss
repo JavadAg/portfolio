@@ -3,8 +3,8 @@ html {
   scroll-behavior: smooth;
   -moz-tab-size: 4;
   tab-size: 4;
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -12,9 +12,6 @@ body {
   margin: 0;
   font-family: "Heebo", sans-serif;
   position: relative;
-  &::-webkit-scrollbar {
-    display: none;
-  }
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -33,8 +30,8 @@ kbd,
 samp,
 pre {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo,
-    monospace; /* 1 */
-  font-size: 1em; /* 2 */
+    monospace;
+  font-size: 1em;
 }
 
 small {
@@ -67,10 +64,10 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
 }
 
 button,

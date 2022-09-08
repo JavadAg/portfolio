@@ -1,0 +1,7 @@
+.sidebar_container {
+  display: flex;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}

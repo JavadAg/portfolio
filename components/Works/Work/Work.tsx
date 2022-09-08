@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React from "react"
 import styles from "./Work.module.scss"
 import { AnimatePresence, motion } from "framer-motion"
 import Img from "next/future/image"
@@ -26,12 +26,28 @@ const Work = ({ work, isExpanded, setIsExpanded }) => {
     }
   }
 
+  const coverImage = {
+    open: {
+      height: "100%",
+      width: "100%"
+    },
+    close: { width: "40%" },
+    filter: {
+      filter: `grayscale(1) blur(4px)`,
+      height: "100%",
+      width: "100%"
+    },
+    hover: {
+      filter: `grayscale(0) blur(0px)`
+    }
+  }
+
   return (
     <motion.div
-      transition={{ duration: 1 }}
-      initial={{ height: "auto" }}
-      animate={{ height: "auto" }}
       layout
+      initial={{ opacity: 0 }}
+      whileInView={{ y: [200, 0], opacity: [0, 0.5, 1] }}
+      transition={{ duration: 1 }}
       onClick={() =>
         setIsExpanded((prev: any) => (prev === work.id ? 0 : work.id))
       }
@@ -40,18 +56,25 @@ const Work = ({ work, isExpanded, setIsExpanded }) => {
       <motion.div
         layout
         initial={false}
-        animate={isExpanded === work.id ? "close" : "open"}
-        transition={{ duration: 1 }}
+        animate={isExpanded === work.id ? "open" : "close"}
         variants={{
-          open: {
-            height: "100%",
-            width: "100%"
-          },
-          close: { width: "40%" }
+          open: { opacity: 0 },
+          close: { opacity: 0.7, transition: { delay: 0.7 } }
         }}
-        className={styles.item_image_wrapper}
+        className={styles.toggle_button}
       >
         <ExpandToggle />
+      </motion.div>
+
+      <motion.div
+        layout
+        initial="filter"
+        whileHover="hover"
+        animate={isExpanded === work.id ? ["close", "hover"] : "open"}
+        transition={{ duration: 1 }}
+        variants={coverImage}
+        className={styles.item_image_wrapper}
+      >
         <Img src={work.imgSrc} />
       </motion.div>
       <AnimatePresence initial={false}>
@@ -115,22 +138,6 @@ const Work = ({ work, isExpanded, setIsExpanded }) => {
               transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
             >
               {work.description}
-            </motion.span>
-            <motion.span
-              layout
-              variants={{
-                open: {
-                  opacity: 1,
-                  x: 0
-                },
-                close: {
-                  opacity: 0,
-                  x: 200
-                }
-              }}
-              transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
-            >
-              Created using:
             </motion.span>
             <motion.div
               layout

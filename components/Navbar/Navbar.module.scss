@@ -23,6 +23,10 @@
       color: teal;
       transition: all 500ms ease-in-out;
     }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   .navbar::after {

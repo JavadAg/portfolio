@@ -10,7 +10,7 @@ const Hero = () => {
   /*   const [visible, setVisible] = useState(false)
    */
 
-  let words = ["Developer", "Gamer", "Photographer"],
+  let words = ["Web Developer", "Gamer", "Photographer"],
     part,
     i = 0,
     offset = 0,
@@ -80,7 +80,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <div className={styles.hero_wrapper}>
+    <div className={styles.hero_container}>
       <div className={styles.hero_texts}>
         <span>Hi, I'm</span>
         <span>Javad Aghebati</span>

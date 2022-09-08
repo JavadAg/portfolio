@@ -43,36 +43,6 @@ const works = [
     website_href: "https://shareit-mern.netlify.app/",
     git_href: "https://github.com/JavadAg/shareit-mern",
     techs: ["React", "RTK", "TailwindCSS", "ExpressJS", "MongoDB", "Multer"]
-  },
-  {
-    id: 4,
-    imgSrc: weather_img,
-    title: "Weather-app",
-    description:
-      "Simple Weather app as part of projects i made to practice typescript. user can search through cities provided by geo api. current weather and forecast provided by openweather api.",
-    website_href: "http://weather-app-javadag.vercel.app",
-    git_href: "https://github.com/JavadAg/weather-app",
-    techs: ["React", "TypeScript", "OpenWeatherApi", "GeoApi", "TailwinCSS"]
-  },
-  {
-    id: 5,
-    imgSrc: todo_img,
-    title: "Todo-app",
-    description:
-      "simple todo app as part of projects i made to practice typescript. login using google authentication. features are add todo, set as done and delete it.",
-    website_href: "https://todo-ts-supabase.netlify.app/",
-    git_href: "https://github.com/JavadAg/simple-todo",
-    techs: ["React", "TypeScript", "Supabase", "TailwindCSS"]
-  },
-  {
-    id: 6,
-    imgSrc: countries_img,
-    title: "Countries-app",
-    description:
-      "made this app to practice api . its part of challenges in frontendmentor website . user can see all countries, filter by region and see specific country detail.",
-    website_href: "http://frontendmentor-restapicounteries.vercel.app/",
-    git_href: "https://github.com/JavadAg/frontendmentor-restapicounteries",
-    techs: ["React", "RestcountriesApi", "TailwindCSS"]
   }
 ]
 export default works
