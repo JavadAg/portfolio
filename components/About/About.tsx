@@ -1,5 +1,4 @@
-import dynamic from "next/dynamic"
-import React, { forwardRef, useEffect } from "react"
+import React from "react"
 import styles from "./About.module.scss"
 import Image from "next/future/image"
 import aboutPic from "../../public/my_photo.jpg"
@@ -17,7 +16,7 @@ const About = () => {
           transition={{ type: "spring", duration: 1, stiffness: 300 }}
           className={styles.about_photo}
         >
-          <Image src={aboutPic} />
+          <Image src={aboutPic} alt="about_photo" />
         </motion.div>
         <p>
           Front-end web developer passionate about creating web applications and

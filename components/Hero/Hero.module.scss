@@ -14,31 +14,10 @@ $slider-font-size: 3rem;
   width: 100%;
   height: 100vh;
 
-  @media screen and (max-width: 1366px) {
-    color: yellow;
-
-    @media screen and (max-width: 1200px) {
-      color: blue;
-
-      @media screen and (max-width: 992px) {
-        color: green;
-
-        @media screen and (max-width: 768px) {
-          color: red;
-
-          @media screen and (max-width: 576px) {
-            color: purple;
-          }
-        }
-      }
-    }
-  }
-
   .hero_texts {
     z-index: 4;
-    margin-right: 80px;
     position: relative;
-    gap: 10px;
+    gap: 15px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -56,54 +35,92 @@ $slider-font-size: 3rem;
       }
     }
 
-    & > span:nth-child(1) {
-      font-size: 3rem;
-      font-weight: 200;
-      color: var(--color-text_secondary);
-      transition: color 300ms ease-in-out;
+    .line_1_wrapper {
+      @media screen and (max-width: 576px) {
+        text-align: center;
+        margin-left: -50%;
+      }
 
-      @media screen and (max-width: 1200px) {
-        font-size: 2.8rem;
+      :nth-child(4) {
+        padding-left: 0.4rem;
+      }
 
-        @media screen and (max-width: 992px) {
-          font-size: 2.5rem;
+      .line_1 {
+        font-size: 3rem;
+        font-weight: 200;
+        display: inline-block;
+        color: var(--color-text_secondary);
+        transition: color 300ms ease-in-out;
 
-          @media screen and (max-width: 768px) {
-            font-size: 2.4rem;
+        @media screen and (max-width: 1200px) {
+          font-size: 2.8rem;
 
-            @media screen and (max-width: 576px) {
-              font-size: 2rem;
-              text-align: center;
-              margin-right: 190px;
+          @media screen and (max-width: 992px) {
+            font-size: 2.5rem;
+
+            @media screen and (max-width: 768px) {
+              font-size: 2.4rem;
+
+              @media screen and (max-width: 576px) {
+                font-size: 2rem;
+              }
             }
           }
         }
       }
     }
 
-    & > span:nth-child(2) {
-      font-size: 5rem;
-      font-weight: 700;
+    .line_2_wrapper {
       margin-left: 50px;
-      text-align: center;
 
-      @media screen and (max-width: 1200px) {
-        font-size: 4.7rem;
+      @media screen and (max-width: 576px) {
+        text-align: center;
+        margin-left: 0px;
+      }
 
-        @media screen and (max-width: 992px) {
-          font-size: 4rem;
+      :nth-child(6) {
+        padding-left: 1rem;
+      }
 
-          @media screen and (max-width: 768px) {
-            font-size: 3.5rem;
-            margin-left: 10px;
+      .line_2 {
+        font-size: 5rem;
+        font-weight: 700;
+        display: inline-block;
+        text-align: center;
 
-            @media screen and (max-width: 576px) {
-              font-size: 2.4rem;
-              margin-left: 0px;
+        @media screen and (max-width: 1200px) {
+          font-size: 4.7rem;
+
+          @media screen and (max-width: 992px) {
+            font-size: 4rem;
+
+            @media screen and (max-width: 768px) {
+              font-size: 3.5rem;
+
+              @media screen and (max-width: 576px) {
+                font-size: calc(1.5rem + 4vw);
+              }
             }
           }
         }
       }
+    }
+
+    .sliding_gradient {
+      position: absolute;
+      display: block;
+      content: "";
+      z-index: -1;
+      top: 8rem;
+      left: 19rem;
+      width: 20rem;
+      height: 1.5rem;
+      background-image: linear-gradient(
+        -225deg,
+        #65379b 0%,
+        #886aea 53%,
+        #6457c6 100%
+      );
     }
 
     .typing_slider_wrapper {
@@ -123,12 +140,12 @@ $slider-font-size: 3rem;
       }
 
       .typing_slider {
-        border-right: 0.15em solid orange;
+        border-right: 0.15em solid;
         background-image: linear-gradient(
-          40deg,
-          #aa4290 -10%,
-          rgb(96, 30, 202) 50%,
-          #868afa 100%
+          -225deg,
+          #65379b 0%,
+          #886aea 53%,
+          #6457c6 100%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -163,7 +180,7 @@ $slider-font-size: 3rem;
             font-size: 3rem;
 
             @media screen and (max-width: 576px) {
-              font-size: 2rem;
+              font-size: calc(1.4rem + 4vw);
 
               &:nth-child(1) {
                 margin-left: 0px;
@@ -180,8 +197,8 @@ $slider-font-size: 3rem;
     to {
       border-color: transparent;
     }
-    50% {
-      border-color: rgb(79, 3, 126);
+    100% {
+      border-color: #f36421;
     }
   }
 

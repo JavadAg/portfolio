@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import styles from "./Hero.module.scss"
 import { useRouter } from "next/router"
+import { motion } from "framer-motion"
 
 const Hero = () => {
   const router = useRouter()
@@ -54,36 +55,100 @@ const Hero = () => {
     }, speed)
   }
 
-  /*  const toggleVisible = () => {
-    const position = window.scrollY
+  const line1 = "Hi, I'm"
+  const line2 = "Javad Aghebati"
 
-    if (position > 300) {
-      setVisible(true)
-    } else if (position < 300) {
-      setVisible(false)
+  const sentence = {
+    hidden: {},
+    visible: {
+      transition: {
+        when: "beforeChildren"
+      }
     }
-  } */
+  }
 
-  /* useEffect(() => {
-    window.addEventListener("scroll", toggleVisible)
-  })
- */
-  /* const scrollTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+  const letter = {
+    hidden: {
+      opacity: [0],
+      y: -200
+    },
+    visible: (custom) => ({
+      opacity: [0, 0.1, 0.3, 1],
+      y: 0,
+      transition: {
+        delay: custom,
+        duration: 1,
+        type: "tween",
+        ease: "easeInOut"
+      }
     })
-  } */
+  }
+
+  const sliding_gradient = {
+    hidden: {
+      opacity: 0,
+      x: -400
+    },
+    visible: {
+      opacity: [0, 0.1, 0.3, 1],
+      x: 0,
+      transition: { type: "tween", duration: 1.5, ease: "easeOut" }
+    }
+  }
 
   useEffect(() => {
     typing()
   }, [])
 
   return (
-    <div className={styles.hero_container}>
+    <div id="home" className={styles.hero_container}>
       <div className={styles.hero_texts}>
-        <span>Hi, I'm</span>
-        <span>Javad Aghebati</span>
+        <motion.div
+          variants={sentence}
+          animate="visible"
+          initial="hidden"
+          layout
+          className={styles.line_1_wrapper}
+        >
+          {line1.split("").map((char, index) => (
+            <motion.span
+              layout
+              custom={Math.random() * 1}
+              className={styles.line_1}
+              key={char + "_" + index}
+              variants={letter}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </motion.div>
+
+        <motion.div
+          variants={sentence}
+          animate="visible"
+          initial="hidden"
+          layout
+          className={styles.line_2_wrapper}
+        >
+          {line2.split("").map((char, index) => (
+            <motion.span
+              layout
+              custom={Math.random() * 1}
+              className={styles.line_2}
+              key={char + "_" + index}
+              variants={letter}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </motion.div>
+        <motion.span
+          layout
+          initial="hidden"
+          animate="visible"
+          variants={sliding_gradient}
+          className={styles.sliding_gradient}
+        />
         <div className={styles.typing_slider_wrapper}>
           <span>I'm</span>
           <span className={styles.typing_slider} ref={textRef}></span>

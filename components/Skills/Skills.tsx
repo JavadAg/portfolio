@@ -17,11 +17,11 @@ import styles from "./Skills.module.scss"
 const Skills = () => {
   const dragContainerRef = useRef()
   return (
-    <motion.div className={styles.skills_container}>
+    <motion.div id="skills" className={styles.skills_container}>
       <span>Skills</span>
       <motion.div ref={dragContainerRef} className={styles.skills_wrapper}>
         <motion.div drag dragConstraints={dragContainerRef}>
-          <Js_logo className={styles.carousel_item} />
+          <Js_logo className={`${styles.carousel_item} ${styles.carouse_1}`} />
         </motion.div>
         <motion.div drag dragConstraints={dragContainerRef}>
           <TS_logo className={styles.carousel_item} />

@@ -4,7 +4,7 @@ import styles from "./Contact.module.scss"
 
 const Contact = () => {
   return (
-    <div className={styles.contact_container}>
+    <div id="contact" className={styles.contact_container}>
       <span>Contact</span>
       <motion.div layout className={styles.contact}>
         <span>Get In Touch</span>

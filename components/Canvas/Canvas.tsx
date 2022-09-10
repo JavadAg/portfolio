@@ -52,9 +52,9 @@ const Canvas = () => {
   }
 
   const createPoints = (item: Points) => {
-    var spring = item.spring + 0.1 * Math.random() - 0.05
-    var friction = pointValues.friction + 0.01 * Math.random() - 0.005
-    var nodes: Nodes[] = []
+    let spring = item.spring + 0.1 * Math.random() - 0.05
+    let friction = pointValues.friction + 0.01 * Math.random() - 0.005
+    let nodes: Nodes[] = []
     for (var t, n = 0; n < pointValues.size; n++) {
       t = { x: 0, y: 0, vy: 0, vx: 0 }
       t.x = pos.x
@@ -69,6 +69,7 @@ const Canvas = () => {
     let spring = point.spring,
       node = point.nodes[0],
       nodes = []
+
     node.vx += (pos.x - node.x) * spring
     node.vy += (pos.y - node.y) * spring
     for (var n, i = 0, a = point.nodes.length; i < a; i++) {
@@ -122,8 +123,10 @@ const Canvas = () => {
     }
     function updatePos(e: MouseEvent | TouchEvent) {
       if (typeof TouchEvent !== "undefined" && e instanceof TouchEvent) {
-        pos.x = e.touches[0].pageX
-        pos.y = e.touches[0].pageY
+        console.log(e)
+
+        pos.x = e.touches[0].clientX
+        pos.y = e.touches[0].clientY
       } else if (e instanceof MouseEvent) {
         pos.x = e.clientX
         pos.y = e.clientY
@@ -131,7 +134,7 @@ const Canvas = () => {
     }
     function touch(e: TouchEvent) {
       1 == e.touches.length &&
-        ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY))
+        ((pos.x = e.touches[0].clientX), (pos.y = e.touches[0].clientY))
     }
     document.removeEventListener("mousemove", onMousemove),
       document.removeEventListener("touchstart", onMousemove),

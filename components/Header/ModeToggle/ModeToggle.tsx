@@ -38,8 +38,6 @@ const ModeToggle = () => {
   return (
     <motion.button
       className={styles.toggle_button}
-      data-testid="darkmode-switch"
-      aria-describedby="lightDarkSwitcherTooltip"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       data-theme={theme === "dark" ? "dark" : "light"}
       animate={theme === "dark" ? "checked" : "unchecked"}

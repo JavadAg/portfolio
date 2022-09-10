@@ -14,10 +14,12 @@
     list-style: none;
     position: relative;
     justify-content: center;
-    gap: 20px;
+    font-size: 1rem;
+    writing-mode: vertical-lr;
+    gap: 50px;
     padding: 0;
     align-items: center;
-    flex-direction: column;
+    /* flex-direction: column; */
 
     li:hover {
       color: teal;
@@ -32,9 +34,10 @@
   .navbar::after {
     content: "";
     width: 1px;
-    height: 330px;
+    height: 12rem;
     display: block;
     position: fixed;
+    right: 3.5rem;
     bottom: 0;
     margin: 0 auto;
     background-color: rgb(60, 60, 60);

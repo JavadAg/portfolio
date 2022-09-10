@@ -1,7 +1,59 @@
 .sidebar_container {
-  display: flex;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  border-left: 1px solid rgba(133, 133, 133, 0.096);
+  background: var(--color-button);
+}
 
-  @media screen and (min-width: 768px) {
-    display: none;
+.sidebar_items {
+  padding: 2rem;
+  top: 4rem;
+  position: relative;
+  gap: 4rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  > li {
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    justify-content: center;
+    transition: all 500ms ease-in-out;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  :hover {
+    background-image: linear-gradient(
+      to right,
+      #fff 0%,
+      #fff 12%,
+      #fff 25%,
+      #7474b0 37%,
+      #7e7ebb 50%,
+      #8389c7 62%,
+      #9795d4 75%,
+      #fff 87%,
+      #fff 100%
+    );
+    background-size: 200% auto;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 500ms ease-in-out;
+    animation: shine 1s linear infinite;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
   }
 }

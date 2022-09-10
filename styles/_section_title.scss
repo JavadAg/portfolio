@@ -1,0 +1,66 @@
+@mixin section-title($title) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 5rem 0;
+  text-align: center;
+  gap: 40px;
+  transition: all 300ms ease-in-out;
+  color: var(--color-text);
+
+  > span {
+    font-size: 3rem;
+    font-weight: 700;
+    position: relative;
+    margin-left: 100px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 2.5rem;
+
+      @media screen and (max-width: 576px) {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  > span::before {
+    content: "";
+    position: absolute;
+    left: -100px;
+    top: 25px;
+    display: block;
+    width: 80px;
+    height: 2px;
+    background-color: #868afa;
+
+    @media screen and (max-width: 768px) {
+      top: 22px;
+
+      @media screen and (max-width: 576px) {
+        top: 18px;
+      }
+    }
+  }
+
+  > span::after {
+    content: $title;
+    position: absolute;
+    top: -20px;
+    left: -40px;
+    display: block;
+    opacity: 0.05;
+    font-size: 5rem;
+
+    @media screen and (max-width: 768px) {
+      top: -24px;
+
+      @media screen and (max-width: 576px) {
+        top: -8px;
+        left: -20px;
+        font-size: 3rem;
+      }
+    }
+  }
+}

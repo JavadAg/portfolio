@@ -1,41 +1,11 @@
+@use "../../styles/_section_title" as g;
+
 .skills_container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  gap: 40px;
-  position: relative;
+  @include g.section-title("Skills");
 
-  > span {
-    font-size: 2rem;
-    font-weight: 700;
-    position: relative;
-    margin-left: 100px;
-  }
-
-  > span::before {
-    content: "";
-    position: absolute;
-    left: -100px;
-    top: 25px;
-    display: block;
-    width: 80px;
-    height: 2px;
-    background-color: #868afa;
-  }
-
-  > span::after {
-    content: "Skills";
-    position: absolute;
-    top: -25px;
-    left: -40px;
-    display: block;
-    opacity: 0.05;
-    font-size: 4rem;
-  }
   .skills_wrapper {
     display: flex;
+    z-index: 999999;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
@@ -44,20 +14,22 @@
   }
   .carousel_item {
     display: block;
-    z-index: 9999;
     transition: all 500ms ease-in-out;
     fill: var(--color-svg);
     opacity: 0.25;
     height: 50px;
-    z-index: 4;
     text-align: start;
     font-weight: bold;
     font-size: 2.8rem;
     white-space: nowrap;
     position: relative;
+
+    @media screen and (max-width: 768px) {
+      height: 30px;
+    }
   }
 
-  .carousel_item#{n}:hover {
+  .carousel_item:hover {
     opacity: 1;
   }
 }
