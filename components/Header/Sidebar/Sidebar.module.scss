@@ -1,19 +1,21 @@
+@use "../../../styles/_media_query.scss" as mq;
+
 .sidebar_container {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0px;
   right: 0px;
   bottom: 0px;
   width: 100%;
-  border-left: 1px solid rgba(133, 133, 133, 0.096);
+  z-index: 5;
   background: var(--color-button);
 }
 
 .sidebar_items {
-  padding: 2rem;
-  top: 4rem;
   position: relative;
   gap: 4rem;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,38 +24,76 @@
   > li {
     display: flex;
     align-items: center;
-    font-size: 3rem;
+    position: relative;
+    font-size: 1.75rem;
     justify-content: center;
-    transition: all 500ms ease-in-out;
     text-align: center;
     cursor: pointer;
-  }
 
-  :hover {
-    background-image: linear-gradient(
-      to right,
-      #fff 0%,
-      #fff 12%,
-      #fff 25%,
-      #7474b0 37%,
-      #7e7ebb 50%,
-      #8389c7 62%,
-      #9795d4 75%,
-      #fff 87%,
-      #fff 100%
-    );
-    background-size: 200% auto;
+    @include mq.response(xs) {
+      font-size: 2rem;
 
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 500ms ease-in-out;
-    animation: shine 1s linear infinite;
-  }
-}
+      @include mq.response(sm) {
+        font-size: 2.2rem;
 
-@keyframes shine {
-  to {
-    background-position: 200% center;
+        @include mq.response(md) {
+          font-size: 2.4rem;
+
+          @include mq.response(lg) {
+            font-size: 2.6rem;
+
+            @include mq.response(xl) {
+              font-size: 2.8rem;
+            }
+          }
+        }
+      }
+    }
+
+    .sliding_gradient {
+      position: absolute;
+      display: block;
+      align-self: center;
+      top: 2.2rem;
+      border-radius: 10px;
+      width: 7ch;
+      height: 0.2ch;
+      background-image: linear-gradient(
+        -225deg,
+        #5932e4 0%,
+        #5218f2 48%,
+        #4801ff 100%
+      );
+
+      @include mq.response(xs) {
+        top: 2.8rem;
+        width: 8ch;
+        height: 0.3ch;
+
+        @include mq.response(sm) {
+          top: 3rem;
+          width: 8ch;
+          height: 0.3ch;
+
+          @include mq.response(md) {
+            top: 3.2rem;
+            width: 8ch;
+            height: 0.3ch;
+
+            @include mq.response(lg) {
+              top: 3.4rem;
+              width: 8ch;
+              height: 0.3ch;
+
+              @include mq.response(xl) {
+                top: 3.6rem;
+                width: 8ch;
+                height: 0.3ch;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

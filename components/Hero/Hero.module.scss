@@ -1,3 +1,5 @@
+@use "../../styles/_media_query.scss" as mq;
+
 $slides: 3;
 $typing-duration: 1.5s;
 $tab-letters: 9 5 12;
@@ -11,34 +13,48 @@ $slider-font-size: 3rem;
   transition: all 300ms ease-in-out;
   color: var(--color-text);
   text-align: start;
+  z-index: 5;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 
   .hero_texts {
     z-index: 4;
     position: relative;
-    gap: 15px;
+    gap: 1.75rem;
+
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-
-    @media screen and (max-width: 992px) {
-      margin-right: 20px;
-
-      @media screen and (max-width: 768px) {
-        margin-right: 10px;
-
-        @media screen and (max-width: 576px) {
-          margin-right: 0px;
-          width: 95%;
-        }
-      }
-    }
+    width: 95%;
 
     .line_1_wrapper {
-      @media screen and (max-width: 576px) {
-        text-align: center;
-        margin-left: -50%;
+      margin-right: calc(2rem + (50vw));
+      font-size: 2rem;
+      font-weight: 200;
+
+      @include mq.response(xs) {
+        font-size: 2.5rem;
+        margin-right: 20rem;
+
+        @include mq.response(sm) {
+          font-size: 2.8rem;
+
+          @include mq.response(md) {
+            font-size: 3rem;
+            margin-right: 30rem;
+
+            @include mq.response(lg) {
+              font-size: 3.2rem;
+              margin-right: 37rem;
+
+              @include mq.response(xl) {
+                font-size: 3.6rem;
+                margin-right: 45rem;
+              }
+            }
+          }
+        }
       }
 
       :nth-child(4) {
@@ -46,106 +62,79 @@ $slider-font-size: 3rem;
       }
 
       .line_1 {
-        font-size: 3rem;
-        font-weight: 200;
         display: inline-block;
         color: var(--color-text_secondary);
         transition: color 300ms ease-in-out;
-
-        @media screen and (max-width: 1200px) {
-          font-size: 2.8rem;
-
-          @media screen and (max-width: 992px) {
-            font-size: 2.5rem;
-
-            @media screen and (max-width: 768px) {
-              font-size: 2.4rem;
-
-              @media screen and (max-width: 576px) {
-                font-size: 2rem;
-              }
-            }
-          }
-        }
       }
     }
 
     .line_2_wrapper {
-      margin-left: 50px;
-
-      @media screen and (max-width: 576px) {
-        text-align: center;
-        margin-left: 0px;
-      }
+      position: relative;
 
       :nth-child(6) {
         padding-left: 1rem;
       }
 
       .line_2 {
-        font-size: 5rem;
+        position: relative;
+        font-size: 2.3rem;
         font-weight: 700;
         display: inline-block;
         text-align: center;
 
-        @media screen and (max-width: 1200px) {
-          font-size: 4.7rem;
+        @include mq.response(xs) {
+          font-size: 3rem;
 
-          @media screen and (max-width: 992px) {
-            font-size: 4rem;
+          @include mq.response(sm) {
+            font-size: 3.4rem;
 
-            @media screen and (max-width: 768px) {
-              font-size: 3.5rem;
+            @include mq.response(md) {
+              font-size: 5rem;
 
-              @media screen and (max-width: 576px) {
-                font-size: calc(1.5rem + 4vw);
+              @include mq.response(lg) {
+                font-size: 5.5rem;
+
+                @include mq.response(xl) {
+                  font-size: 6rem;
+                }
               }
             }
           }
         }
       }
-    }
 
-    .sliding_gradient {
-      position: absolute;
-      display: block;
-      content: "";
-      z-index: -1;
-      top: 8rem;
-      left: 19rem;
-      width: 20rem;
-      height: 1.5rem;
-      background-image: linear-gradient(
-        -225deg,
-        #65379b 0%,
-        #886aea 53%,
-        #6457c6 100%
-      );
+      :nth-child(8)::after {
+        position: absolute;
+        display: block;
+        content: "";
+        z-index: -1;
+        bottom: 0.2rem;
+        left: -1rem;
+        width: 7ch;
+        height: 40%;
+        background-image: linear-gradient(
+          -225deg,
+          #ac32e4 0%,
+          #7918f2 48%,
+          #4801ff 100%
+        );
+      }
     }
 
     .typing_slider_wrapper {
-      z-index: 4;
       display: flex;
-      width: 500px;
       justify-content: flex-start;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 10px;
-
-      @media screen and (max-width: 576px) {
-        gap: 5px;
-        text-align: center;
-        justify-content: center;
-        width: 100%;
-      }
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 2rem;
 
       .typing_slider {
-        border-right: 0.15em solid;
+        border-right: 0.35rem solid;
         background-image: linear-gradient(
           -225deg,
-          #65379b 0%,
-          #886aea 53%,
-          #6457c6 100%
+          #ac32e4 0%,
+          #7918f2 48%,
+          #4801ff 100%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -160,30 +149,26 @@ $slider-font-size: 3rem;
 
       > span {
         z-index: 4;
-        font-size: 3.8rem;
+        font-size: 2.2rem;
         color: var(--color-text_secondary);
         transition: color 300ms ease-in-out;
         font-weight: 700;
 
-        &:nth-child(1) {
-          margin-left: 150px;
-        }
+        @include mq.response(xs) {
+          font-size: 2.8rem;
 
-        @media screen and (max-width: 992px) {
-          font-size: 3.4rem;
-
-          &:nth-child(1) {
-            margin-left: 110px;
-          }
-
-          @media screen and (max-width: 768px) {
+          @include mq.response(sm) {
             font-size: 3rem;
 
-            @media screen and (max-width: 576px) {
-              font-size: calc(1.4rem + 4vw);
+            @include mq.response(md) {
+              font-size: 4rem;
 
-              &:nth-child(1) {
-                margin-left: 0px;
+              @include mq.response(lg) {
+                font-size: 4.5rem;
+
+                @include mq.response(xl) {
+                  font-size: 5rem;
+                }
               }
             }
           }
@@ -198,76 +183,82 @@ $slider-font-size: 3rem;
       border-color: transparent;
     }
     100% {
-      border-color: #f36421;
+      border-color: #5e1eff;
     }
   }
 
-  > button {
-    width: 200px;
+  .cv_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22ch;
     position: relative;
-    margin-top: 20px;
-    z-index: 4;
-    border: none;
-    font-weight: 700;
     transition: all 300ms ease-in-out;
     border-radius: 4px;
-    color: var(--color-button_text);
-    border-color: rgb(67, 67, 67);
     background-color: var(--color-button);
-    height: 40px;
-  }
+    height: 4ch;
+    border: 1px solid rgba(102, 102, 102, 0.089);
 
-  > button::before {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(
-      40deg,
-      #aa4290 -10%,
-      rgb(96, 30, 202) 50%,
-      #868afa 100%
-    );
-    transform: translate3d(0px, 1px, 0) scale(1.01);
-    filter: blur(8px);
-    opacity: 0;
-    transition: opacity 0.3s;
-    border-radius: inherit;
-  }
-  > button:hover::before {
-    opacity: 0.8;
-  }
+    > span {
+      position: relative;
+      width: 3.2ch;
+      transition: all 300ms ease-in-out;
+      stroke: currentColor;
+      color: var(--color-button_text);
+      fill: currentColor;
+      background-color: var(--color-button);
+    }
 
-  > button::after {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: inherit;
-    border-radius: inherit;
+    > button {
+      position: relative;
+      outline: none;
+      border: none;
+      transition: all 300ms ease-in-out;
+      font-weight: 700;
+      color: var(--color-button_text);
+      background-color: var(--color-button);
+    }
+
+    &::before {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: linear-gradient(
+        -225deg,
+        #ac32e4 0%,
+        #7918f2 48%,
+        #4801ff 100%
+      );
+      filter: blur(12px);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      border-radius: inherit;
+    }
+    &:hover::before {
+      transition: opacity 300ms ease-in-out;
+      opacity: 0.8;
+    }
   }
 
   .arrows {
     z-index: 4;
     position: fixed;
-    bottom: 50px;
-    left: 40px;
+    bottom: 3rem;
+    left: 1.5rem;
   }
 
   .arrows span {
     display: block;
-    width: 12px;
-    height: 12px;
+    width: 1.2ch;
+    height: 1.2ch;
     border-bottom: 2px solid var(--color-text);
     border-right: 2px solid var(--color-text);
     transform: rotate(45deg);
-    margin: -10px;
+    margin: -0.5rem;
     animation: animate 2s infinite;
   }
 

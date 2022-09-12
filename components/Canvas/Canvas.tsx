@@ -123,8 +123,6 @@ const Canvas = () => {
     }
     function updatePos(e: MouseEvent | TouchEvent) {
       if (typeof TouchEvent !== "undefined" && e instanceof TouchEvent) {
-        console.log(e)
-
         pos.x = e.touches[0].clientX
         pos.y = e.touches[0].clientY
       } else if (e instanceof MouseEvent) {

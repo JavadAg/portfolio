@@ -1,5 +1,7 @@
-.social_menu_wrapper {
-  display: flex;
+@use "../../styles/_media_query.scss" as mq;
+
+.contact_sidebar_container {
+  display: none;
   position: fixed;
   bottom: 0px;
   top: 0px;
@@ -9,7 +11,7 @@
   left: 20px;
   color: rgb(172, 172, 172);
   width: 70px;
-  .social_menu {
+  .contact_sidebar_wrapper {
     display: flex;
     list-style: none;
     position: relative;
@@ -22,19 +24,7 @@
     /*  flex-direction: column; */
   }
 
-  .social_menu::before {
-    content: "";
-    width: 1px;
-    height: 19rem;
-    display: block;
-    position: fixed;
-    left: 3.5rem;
-    top: 0;
-    margin: 0 auto;
-    background-color: rgb(199, 199, 199);
-  }
-
-  @media screen and (max-width: 768px) {
-    display: none;
+  @include mq.response(sm) {
+    display: flex;
   }
 }

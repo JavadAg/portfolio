@@ -10,8 +10,9 @@ import dynamic from "next/dynamic"
 import Hero from "../components/Hero/Hero"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
-import SocialMenu from "../components/SocialMenu/SocialMenu"
+import ContactSidebar from "../components/ContactSidebar/ContactSidebar"
 import Navbar from "../components/Navbar/Navbar"
+import { useRouter } from "next/router"
 
 export default function Home() {
   const Canvas = dynamic(() => import("../components/Canvas/Canvas"), {
@@ -61,7 +62,7 @@ export default function Home() {
     <div className={styles.layout}>
       <Header />
       <main className={styles.main}>
-        <SocialMenu />
+        <ContactSidebar />
         {/*  onMouseEnter={textEnter}
         onMouseLeave={textLeave} */}
         {/* <CustomCursor /> */}
@@ -76,7 +77,6 @@ export default function Home() {
         variants={variants}
         animate={cursorVariant}
       /> */}
-        <Navbar />
       </main>
       <Footer />
     </div>

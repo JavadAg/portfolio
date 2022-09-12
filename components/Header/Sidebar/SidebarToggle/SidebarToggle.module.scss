@@ -1,15 +1,12 @@
 .toggle_sidebar_button {
   outline: none;
   border: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   cursor: pointer;
   stroke: var(--color-text);
   fill: transparent;
   background-color: transparent;
-  z-index: 99;
   justify-content: center;
+  z-index: 6;
   align-items: center;
   align-self: center;
   display: flex;

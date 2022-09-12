@@ -1,15 +1,25 @@
 import React, { useEffect, useRef, useState } from "react"
 import styles from "./Hero.module.scss"
 import { useRouter } from "next/router"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+import Cv from "../../public/assets/cv.svg"
 
 const Hero = () => {
   const router = useRouter()
 
-  let textRef = useRef<HTMLSpanElement>()
+  const [scrollDownBtn, setScrollDownBtn] = useState(true)
 
-  /*   const [visible, setVisible] = useState(false)
-   */
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        setScrollDownBtn(false)
+      } else {
+        setScrollDownBtn(true)
+      }
+    })
+  }, [])
+
+  let textRef = useRef<HTMLSpanElement>()
 
   let words = ["Web Developer", "Gamer", "Photographer"],
     part,
@@ -141,25 +151,48 @@ const Hero = () => {
               {char}
             </motion.span>
           ))}
+          <motion.span
+            layout
+            initial="hidden"
+            animate="visible"
+            variants={sliding_gradient}
+            className={styles.sliding_gradient}
+          />
         </motion.div>
-        <motion.span
-          layout
-          initial="hidden"
-          animate="visible"
-          variants={sliding_gradient}
-          className={styles.sliding_gradient}
-        />
+
         <div className={styles.typing_slider_wrapper}>
           <span>I'm</span>
           <span className={styles.typing_slider} ref={textRef}></span>
         </div>
       </div>
-      <button>Download Resume</button>
-      <div className={styles.arrows} onClick={() => router.push("#about")}>
-        <span></span>
-        <span></span>
-        <span></span>
+      <div className={styles.cv_button}>
+        <span>
+          <Cv />
+        </span>
+        <button>Download Resume</button>
       </div>
+
+      <AnimatePresence>
+        {scrollDownBtn && (
+          <motion.div
+            layout
+            variants={{
+              show: { opacity: [0, 0.2, 0.4, 0.7, 1] },
+              hidden: { opacity: [1, 0.7, 0.5, 0.3, 0] }
+            }}
+            transition={{ duration: 1, type: "tween" }}
+            animate={scrollDownBtn ? "show" : "hidden"}
+            exit="hidden"
+            initial="show"
+            className={styles.arrows}
+            onClick={() => router.push("#about")}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

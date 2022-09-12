@@ -16,45 +16,46 @@ import styles from "./Skills.module.scss"
 
 const Skills = () => {
   const dragContainerRef = useRef()
+
   return (
     <motion.div id="skills" className={styles.skills_container}>
       <span>Skills</span>
       <motion.div ref={dragContainerRef} className={styles.skills_wrapper}>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <Js_logo className={`${styles.carousel_item} ${styles.carouse_1}`} />
+        <motion.div>
+          <Js_logo className={`${styles.skill_item}`} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <TS_logo className={styles.carousel_item} />
+        <motion.div>
+          <TS_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <React_logo className={styles.carousel_item} />
+        <motion.div>
+          <React_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <NextJS_logo className={styles.carousel_item} />
+        <motion.div>
+          <NextJS_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <Html_logo className={styles.carousel_item} />
+        <motion.div>
+          <Html_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <Css_logo className={styles.carousel_item} />
+        <motion.div>
+          <Css_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <TailwindCSS_logo className={styles.carousel_item} />
+        <motion.div>
+          <TailwindCSS_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <BootS_logo className={styles.carousel_item} />
+        <motion.div>
+          <BootS_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <Sass_logo className={styles.carousel_item} />
+        <motion.div>
+          <Sass_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <Rtk_logo className={styles.carousel_item} />
+        <motion.div>
+          <Rtk_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <ReactQuery_logo className={styles.carousel_item} />
+        <motion.div>
+          <ReactQuery_logo className={styles.skill_item} />
         </motion.div>
-        <motion.div drag dragConstraints={dragContainerRef}>
-          <Git_logo className={styles.carousel_itemn} />
+        <motion.div>
+          <Git_logo className={styles.skill_item} />
         </motion.div>
       </motion.div>
     </motion.div>
