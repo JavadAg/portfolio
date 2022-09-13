@@ -2,11 +2,6 @@
 
 .works_container {
   @include g.section-title("Works");
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
 
   .works {
     display: flex;
@@ -15,7 +10,15 @@
     flex-direction: column;
     position: relative;
     width: 100%;
-    gap: 40px;
-    min-height: 300px;
+    gap: 4rem;
+  }
+
+  > a {
+    color: #7446be;
+    transition: all 500ms ease-in-out;
+    &:hover {
+      color: rgb(0, 69, 158);
+      transition: all 500ms ease-in-out;
+    }
   }
 }

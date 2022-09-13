@@ -11,7 +11,7 @@ import Hero from "../components/Hero/Hero"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
 import ContactSidebar from "../components/ContactSidebar/ContactSidebar"
-import Navbar from "../components/Navbar/Navbar"
+import Navbar from "../components/Header/Navbar/Navbar"
 import { useRouter } from "next/router"
 
 export default function Home() {

@@ -20,7 +20,7 @@ const Skills = () => {
   return (
     <motion.div id="skills" className={styles.skills_container}>
       <span>Skills</span>
-      <motion.div ref={dragContainerRef} className={styles.skills_wrapper}>
+      <motion.div className={styles.skills_wrapper}>
         <motion.div>
           <Js_logo className={`${styles.skill_item}`} />
         </motion.div>

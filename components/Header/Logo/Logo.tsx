@@ -4,8 +4,6 @@ import styles from "./Logo.module.scss"
 import { motion } from "framer-motion"
 
 const Logo = ({ handleLink }) => {
-  const router = useRouter()
-
   const logo_variants = {
     animate: {
       opacity: [0, 1],
@@ -22,6 +20,7 @@ const Logo = ({ handleLink }) => {
 
   return (
     <motion.a
+      className={styles.logo_wrapper}
       initial={false}
       animate="animate"
       whileTap="animate"
@@ -29,7 +28,7 @@ const Logo = ({ handleLink }) => {
     >
       <motion.svg
         layout
-        width="50"
+        width="44"
         height="28"
         viewBox="-7 0 80 20"
         fill="none"

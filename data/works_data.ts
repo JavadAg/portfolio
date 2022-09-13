@@ -39,7 +39,7 @@ const works = [
     imgSrc: shareit_img,
     title: "ShareIt-MERN",
     description:
-      "Shareit is a clone of popular photo sharing apps like instagram,... . it was actually my first big project after learning react. user can register and post their photos , also they can follow and unfollow each other. other features are like posts, send comment,update and delete their own posts.",
+      "Shareit is a clone of popular photo sharing apps like instagram,... . user can register and post their photos , also they can follow and unfollow each other. other features are like posts, send comment,update and delete their own posts.",
     website_href: "https://shareit-mern.netlify.app/",
     git_href: "https://github.com/JavadAg/shareit-mern",
     techs: ["React", "RTK", "TailwindCSS", "ExpressJS", "MongoDB", "Multer"]

@@ -4,45 +4,19 @@
   @include g.section-title("About");
 
   .about_me {
-    height: auto;
-    gap: 20px;
     > p {
-      margin: 0;
-      font-size: 1.3rem;
-      line-height: 3rem;
+      font-size: 1.1rem;
+      line-height: 1.75rem;
       text-align: start;
-
-      @media screen and (max-width: 992px) {
-        font-size: 1.2rem;
-        line-height: 2.2rem;
-
-        @media screen and (max-width: 576px) {
-          font-size: 1rem;
-          line-height: 1.9rem;
-        }
-      }
     }
 
     .about_photo {
-      float: right;
-      margin: 1rem;
-      position: relative;
-      width: 300px;
-      height: 300px;
-
-      @media screen and (max-width: 992px) {
-        width: 250px;
-        height: 250px;
-
-        @media screen and (max-width: 576px) {
-          width: 200px;
-          height: 200px;
-          float: none;
-          align-self: center;
-          margin: 0 auto;
-          bottom: 20px;
-        }
-      }
+      width: 90%;
+      height: 90%;
+      max-width: 20rem;
+      float: none;
+      align-self: center;
+      margin: 0 auto;
 
       > img {
         width: 100%;
@@ -50,14 +24,14 @@
         position: relative;
         border-radius: 50%;
         object-fit: cover;
-        filter: grayscale(100%);
+        filter: grayscale(100%) contrast(75%);
         background-size: cover;
         transition: ease-in-out 0.3s;
 
         z-index: 2;
         &:hover {
           filter: none;
-          border-radius: 10px;
+          border-radius: 5px;
         }
       }
     }

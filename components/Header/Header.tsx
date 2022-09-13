@@ -3,7 +3,7 @@ import styles from "./Header.module.scss"
 import ModeToggle from "./ModeToggle/ModeToggle"
 import Sidebar from "./Sidebar/Sidebar"
 import Logo from "./Logo/Logo"
-import Navbar from "../Navbar/Navbar"
+import Navbar from "./Navbar/Navbar"
 import { useRouter } from "next/router"
 
 const itemIds = [

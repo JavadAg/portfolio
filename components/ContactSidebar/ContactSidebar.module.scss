@@ -21,7 +21,23 @@
     gap: 50px;
     padding: 0;
     align-items: center;
-    /*  flex-direction: column; */
+
+    > li {
+      cursor: pointer;
+      transition: all 500ms ease-in-out;
+
+      &:hover {
+        color: #4901ffa6;
+
+        /* -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-background-clip: text;
+        background-clip: text;
+        -moz-text-fill-color: transparent;
+        white-space: nowrap; */
+        transition: all 500ms ease-in-out;
+      }
+    }
   }
 
   @include mq.response(sm) {
