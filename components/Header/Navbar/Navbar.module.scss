@@ -10,7 +10,7 @@
   writing-mode: vertical-rl;
   z-index: 5;
   right: 20px;
-  color: rgb(145, 143, 143);
+  color: var(--color-text_secondary);
   width: 70px;
   .navbar_wrapper {
     display: flex;
@@ -24,7 +24,6 @@
 
     li {
       display: flex;
-      cursor: pointer;
       justify-content: center;
       align-items: center;
       position: relative;
@@ -41,18 +40,7 @@
     }
 
     .navbar_item_active {
-      background-image: linear-gradient(
-        -225deg,
-        #ac32e4a9 0%,
-        #7a18f2b0 48%,
-        #4901ffa6 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -moz-background-clip: text;
-      background-clip: text;
-      -moz-text-fill-color: transparent;
-      white-space: nowrap;
+      color: #782fffe3;
     }
   }
 

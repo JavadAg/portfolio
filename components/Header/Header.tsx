@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import styles from "./Header.module.scss"
 import ModeToggle from "./ModeToggle/ModeToggle"
 import Sidebar from "./Sidebar/Sidebar"
 import Logo from "./Logo/Logo"
 import Navbar from "./Navbar/Navbar"
 import { useRouter } from "next/router"
+import { motion } from "framer-motion"
 
 const itemIds = [
   { id: "Home", link: "" },
@@ -34,14 +35,14 @@ const Header = () => {
   return (
     <header className={styles.header_wrapper}>
       <Logo handleLink={handleLink} />
-      <div className={styles.right_side}>
+      <motion.div className={styles.right_side}>
         <ModeToggle />
         <Sidebar
           itemIds={itemIds}
           handleLink={handleLink}
           selected={selected}
         />
-      </div>
+      </motion.div>
       <Navbar itemIds={itemIds} handleLink={handleLink} selected={selected} />
     </header>
   )

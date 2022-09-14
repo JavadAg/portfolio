@@ -71,7 +71,7 @@
 
       .line_2 {
         position: relative;
-        font-size: 2.3rem;
+        font-size: 2.5rem;
         font-weight: 700;
         display: inline-block;
         text-align: center;
@@ -117,8 +117,8 @@
 
     .typing_slider_wrapper {
       display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
+      justify-content: center;
+      align-items: center;
       gap: 0.5rem;
       margin-bottom: 2rem;
 
@@ -185,12 +185,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 22ch;
+    width: 14rem;
     position: relative;
     transition: all 300ms ease-in-out;
     border-radius: 4px;
     background-color: var(--color-button);
-    height: 4ch;
+    height: 2.5rem;
     border: 1px solid rgba(119, 83, 248, 0.144);
 
     &:hover {
@@ -199,7 +199,7 @@
 
     > span {
       position: relative;
-      width: 3.1ch;
+      width: 1.75rem;
       transition: all 300ms ease-in-out;
       stroke: currentColor;
       color: var(--color-button_text);
@@ -251,8 +251,8 @@
 
   .arrows span {
     display: block;
-    width: 1.2ch;
-    height: 1.2ch;
+    width: 0.75rem;
+    height: 0.75rem;
     border-bottom: 2px solid var(--color-text);
     border-right: 2px solid var(--color-text);
     transform: rotate(45deg);

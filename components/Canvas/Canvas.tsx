@@ -39,7 +39,7 @@ const Canvas = () => {
   }, [])
 
   function resizeCanvas() {
-    ctx.canvas.width = window.innerWidth - 20
+    ctx.canvas.width = window.innerWidth
     ctx.canvas.height = window.innerHeight
   }
 
@@ -106,6 +106,7 @@ const Canvas = () => {
       i = 0.5 * (node.y + nextNode.y)
       ctx.quadraticCurveTo(node.x, node.y, n, i)
     }
+
     node = point.nodes[a]
     nextNode = point.nodes[a + 1]
     ctx.quadraticCurveTo(node.x, node.y, nextNode.x, nextNode.y)
@@ -159,7 +160,11 @@ const Canvas = () => {
     window.requestAnimationFrame(render)
   }
 
-  return <canvas id="canvas" ref={canvasRef} className={styles.canvas}></canvas>
+  return (
+    <>
+      <canvas id="canvas" ref={canvasRef} className={styles.canvas}></canvas>
+    </>
+  )
 }
 
 export default Canvas

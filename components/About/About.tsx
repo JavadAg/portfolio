@@ -5,20 +5,54 @@ import aboutPic from "../../public/my_photo.jpg"
 import { motion } from "framer-motion"
 
 const About = () => {
+  const about_title_variants = {
+    initial: { scale: 0, opacity: 0 },
+    inView: { scale: 1, opacity: 1 }
+  }
+
+  const paragraph_variants = {
+    initial: { x: -500, opacity: 0 },
+    inView: { x: 0, opacity: 1 }
+  }
+
+  const my_photo_variants = {
+    initial: { x: 500, opacity: 0 },
+    inView: { x: 0, opacity: 1 }
+  }
+
   return (
-    <div id="about" className={styles.about_container}>
-      <span>About</span>
+    <motion.div
+      layout
+      initial="initial"
+      whileInView="inView"
+      id="about"
+      className={styles.about_container}
+    >
+      <motion.span
+        variants={about_title_variants}
+        layout
+        transition={{ duration: 1, type: "tween" }}
+      >
+        About
+      </motion.span>
+
       <div className={styles.about_me}>
         <motion.div
+          layout
+          variants={my_photo_variants}
           whileHover={{
-            scale: 1.02
+            scale: 1.1
           }}
-          transition={{ type: "spring", duration: 1, stiffness: 300 }}
+          transition={{ duration: 1, type: "tween" }}
           className={styles.about_photo}
         >
           <Image src={aboutPic} alt="about_photo" />
         </motion.div>
-        <p>
+        <motion.p
+          variants={paragraph_variants}
+          layout
+          transition={{ duration: 1, type: "tween" }}
+        >
           Front-end web developer passionate about creating web applications and
           experiences on the web . I started web development since 2021 and
           currently learning and improving my skills, excited to work alongside
@@ -29,9 +63,9 @@ const About = () => {
           the work I am capable of. Take a look at my projects. Make sure you
           click on each project to see the tools I used and other interesting
           information.
-        </p>
+        </motion.p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

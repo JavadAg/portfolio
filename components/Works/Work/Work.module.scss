@@ -50,6 +50,14 @@
       font-size: 1.25rem;
       position: relative;
       font-weight: 700;
+
+      @include mq.response(xs) {
+        font-size: 1.75rem;
+
+        @include mq.response(sm) {
+          font-size: 2rem;
+        }
+      }
     }
 
     > :nth-child(2) {
@@ -74,6 +82,8 @@
 
       @include mq.response(xs) {
         padding: 1rem;
+        font-size: 1.05rem;
+        line-height: 1.5rem;
 
         @include mq.response(sm) {
           padding: 1rem 1.5rem;
@@ -90,6 +100,14 @@
       font-weight: 300;
       font-size: 0.75rem;
       align-items: center;
+
+      @include mq.response(xs) {
+        font-size: 0.9rem;
+
+        @include mq.response(sm) {
+          font-size: 1rem;
+        }
+      }
     }
   }
 

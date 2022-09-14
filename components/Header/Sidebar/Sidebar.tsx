@@ -50,6 +50,11 @@ const variants1 = {
 const Sidebar = ({ itemIds, handleLink, selected }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
 
+  const navHandler = (item) => {
+    handleLink(item)
+    toggleOpen()
+  }
+
   return (
     <>
       <SidebarToggle toggle={() => toggleOpen()} isOpen={isOpen} />
@@ -64,7 +69,7 @@ const Sidebar = ({ itemIds, handleLink, selected }) => {
           {itemIds.map((item) => {
             return (
               <motion.li
-                onClick={() => handleLink(item)}
+                onClick={() => navHandler(item)}
                 variants={variants1}
                 whileHover={{ scale: 1.1 }}
               >

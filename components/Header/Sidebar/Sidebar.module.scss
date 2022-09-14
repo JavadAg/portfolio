@@ -28,7 +28,6 @@
     font-size: 1.75rem;
     justify-content: center;
     text-align: center;
-    cursor: pointer;
 
     @include mq.response(xs) {
       font-size: 2rem;
@@ -56,8 +55,8 @@
       align-self: center;
       top: 2.2rem;
       border-radius: 10px;
-      width: 7ch;
-      height: 0.2ch;
+      width: 6rem;
+      height: 0.3rem;
       background-image: linear-gradient(
         -225deg,
         #5932e4 0%,
@@ -67,31 +66,13 @@
 
       @include mq.response(xs) {
         top: 2.8rem;
-        width: 8ch;
-        height: 0.3ch;
+        width: 6.5rem;
+        height: 0.3rem;
 
         @include mq.response(sm) {
           top: 3rem;
-          width: 8ch;
-          height: 0.3ch;
-
-          @include mq.response(md) {
-            top: 3.2rem;
-            width: 8ch;
-            height: 0.3ch;
-
-            @include mq.response(lg) {
-              top: 3.4rem;
-              width: 8ch;
-              height: 0.3ch;
-
-              @include mq.response(xl) {
-                top: 3.6rem;
-                width: 8ch;
-                height: 0.3ch;
-              }
-            }
-          }
+          width: 7rem;
+          height: 0.3rem;
         }
       }
     }

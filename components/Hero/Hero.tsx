@@ -95,11 +95,11 @@ const Hero = () => {
   }
 
   const sliding_gradient = {
-    hidden: {
+    initial: {
       opacity: 0,
       x: -400
     },
-    visible: {
+    inView: {
       opacity: [0, 0.1, 0.3, 1],
       x: 0,
       transition: { type: "tween", duration: 1.5, ease: "easeOut" }
@@ -153,24 +153,60 @@ const Hero = () => {
           ))}
           <motion.span
             layout
-            initial="hidden"
-            animate="visible"
+            initial="initial"
+            animate="inView"
             variants={sliding_gradient}
             className={styles.sliding_gradient}
           />
         </motion.div>
 
-        <div className={styles.typing_slider_wrapper}>
-          <span>I'm</span>
-          <span className={styles.typing_slider} ref={textRef}></span>
-        </div>
+        <motion.div className={styles.typing_slider_wrapper}>
+          <motion.span
+            transition={{ type: "tween", duration: 1, ease: "easeInOut" }}
+            variants={{
+              initial_left: { x: -600, opacity: 0 },
+
+              inView: { x: 0, opacity: 1 }
+            }}
+            initial="initial_left"
+            animate="inView"
+          >
+            I'm
+          </motion.span>
+          <motion.span
+            transition={{ type: "tween", duration: 1, ease: "easeInOut" }}
+            variants={{
+              initial_right: { x: 600, opacity: 0 },
+              inView: { x: 0, opacity: 1 }
+            }}
+            initial="initial_right"
+            animate="inView"
+            className={styles.typing_slider}
+            ref={textRef}
+          ></motion.span>
+        </motion.div>
       </div>
-      <div className={styles.cv_button}>
+
+      <motion.div
+        variants={{
+          initial: { y: 200, opacity: 0 },
+          inView: { y: 0, opacity: 1 }
+        }}
+        transition={{ type: "tween", duration: 1, ease: "easeInOut" }}
+        initial="initial"
+        animate="inView"
+        onClick={() =>
+          router.push(
+            "https://www.dropbox.com/s/yzks6yx4wvfcgyq/%D8%B1%D8%B2%D9%88%D9%85%D9%87%20%D8%AC%D9%88%D8%A7%D8%AF%20%D8%B9%D8%A7%D9%82%D8%A8%D8%AA%DB%8C%20%28Frontend-Developer%29.pdf?dl=0"
+          )
+        }
+        className={styles.cv_button}
+      >
         <span>
           <Cv />
         </span>
         <button>Download Resume</button>
-      </div>
+      </motion.div>
 
       <AnimatePresence>
         {scrollDownBtn && (

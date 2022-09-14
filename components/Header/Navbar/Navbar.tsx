@@ -1,15 +1,39 @@
-import { useRouter } from "next/router"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import styles from "./Navbar.module.scss"
-import { AnimatePresence, motion, useCycle } from "framer-motion"
+import { motion } from "framer-motion"
 
 const Navbar = ({ itemIds, handleLink, selected }) => {
+  const list = {
+    initial: { opacity: 0 },
+    inView: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        when: "beforeChildren",
+        duration: 0.5,
+        type: "spring"
+      }
+    }
+  }
+
+  const items = {
+    initial: { x: 400 },
+    inView: { x: 0 }
+  }
+
   return (
     <div className={styles.navbar_container}>
-      <motion.ul className={styles.navbar_wrapper}>
+      <motion.ul
+        variants={list}
+        initial="initial"
+        animate="inView"
+        className={styles.navbar_wrapper}
+      >
         {itemIds.map((item) => {
           return (
             <motion.li
+              variants={items}
+              transition={{ duration: 0.5, type: "tween" }}
               className={
                 item.link === selected.current && styles.navbar_item_active
               }
