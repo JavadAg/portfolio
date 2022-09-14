@@ -10,14 +10,10 @@
   },
   "dependencies": {
     "@svgr/webpack": "^6.3.1",
-    "axios": "^0.27.2",
     "framer-motion": "^7.2.1",
-    "keen-slider": "^6.7.0",
     "next": "^12.3.0",
     "next-themes": "^0.2.0",
-    "nodemailer": "^6.7.8",
     "react": "^18.2.0",
-    "react-animated-cursor": "^2.5.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0"
   },

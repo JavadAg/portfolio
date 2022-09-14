@@ -2,6 +2,8 @@ import React from "react"
 import styles from "./Work.module.scss"
 import { motion } from "framer-motion"
 import Img, { StaticImageData } from "next/future/image"
+import { CgWebsite } from "react-icons/cg"
+import { FiGithub } from "react-icons/fi"
 
 interface IProps {
   work: {
@@ -81,13 +83,33 @@ const Work: React.FC<IProps> = ({ work }) => {
         variants={item_info_wrapper}
         className={styles.item_info}
       >
-        <motion.span custom={work.id & 1} variants={item_info_variants}>
+        <motion.span
+          className={styles.work_title}
+          custom={work.id & 1}
+          variants={item_info_variants}
+        >
           {work.title}
         </motion.span>
-        <motion.span custom={work.id & 1} variants={item_info_variants}>
+        <motion.span
+          className={styles.work_desc}
+          custom={work.id & 1}
+          variants={item_info_variants}
+        >
           {work.description}
         </motion.span>
-        <motion.div custom={work.id & 1} variants={item_info_variants}>
+        <motion.div className={styles.work_links}>
+          <a>
+            <CgWebsite />
+          </a>
+          <a>
+            <FiGithub />
+          </a>
+        </motion.div>
+        <motion.div
+          className={styles.work_techs}
+          custom={work.id & 1}
+          variants={item_info_variants}
+        >
           {work.techs.map((tech, index) => (
             <span key={index}>{tech}</span>
           ))}

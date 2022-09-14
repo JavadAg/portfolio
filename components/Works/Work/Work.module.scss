@@ -45,7 +45,7 @@
       z-index: 3;
     }
 
-    > :nth-child(1) {
+    .work_title {
       display: block;
       font-size: 1.25rem;
       position: relative;
@@ -60,7 +60,7 @@
       }
     }
 
-    > :nth-child(2) {
+    .work_desc {
       display: block;
       width: 100%;
       font-size: 1rem;
@@ -91,7 +91,10 @@
       }
     }
 
-    :nth-child(3) {
+    .work_links {
+    }
+
+    .work_techs {
       display: flex;
       justify-content: center;
       align-items: center;
