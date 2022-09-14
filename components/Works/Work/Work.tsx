@@ -1,11 +1,23 @@
 import React from "react"
 import styles from "./Work.module.scss"
 import { motion } from "framer-motion"
-import Img from "next/future/image"
+import Img, { StaticImageData } from "next/future/image"
 
-const Work = ({ work }) => {
+interface IProps {
+  work: {
+    id: number
+    imgSrc: StaticImageData
+    title: string
+    description: string
+    website_href: string
+    git_href: string
+    techs: string[]
+  }
+}
+
+const Work: React.FC<IProps> = ({ work }) => {
   const single_work_variantss = {
-    hidden: (custom) => ({
+    hidden: (custom: number) => ({
       opacity: 0,
       x: custom === 0 ? -200 : 200
     }),
@@ -22,7 +34,7 @@ const Work = ({ work }) => {
   }
 
   const item_info_wrapper = {
-    hidden: (custom) => ({
+    hidden: (custom: number) => ({
       opacity: 0,
       x: custom === 0 ? -200 : 200
     }),
@@ -39,7 +51,7 @@ const Work = ({ work }) => {
   }
 
   const item_info_variants = {
-    hidden: (custom) => ({
+    hidden: (custom: number) => ({
       opacity: 0,
       x: custom === 0 ? -400 : 400
     }),

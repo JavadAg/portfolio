@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./Sidebar.module.scss"
 import { motion, useCycle } from "framer-motion"
 import { SidebarToggle } from "./SidebarToggle/SidebarToggle"
+import { Item } from "../../../types/navmenu.types"
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -47,7 +48,13 @@ const variants1 = {
   }
 }
 
-const Sidebar = ({ itemIds, handleLink, selected }) => {
+interface IProps {
+  handleLink: (item: Item) => void
+  itemIds: Item[]
+  selected: React.MutableRefObject<string>
+}
+
+const Sidebar: React.FC<IProps> = ({ itemIds, handleLink, selected }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
 
   const navHandler = (item) => {
@@ -69,6 +76,7 @@ const Sidebar = ({ itemIds, handleLink, selected }) => {
           {itemIds.map((item) => {
             return (
               <motion.li
+                key={item.id}
                 onClick={() => navHandler(item)}
                 variants={variants1}
                 whileHover={{ scale: 1.1 }}

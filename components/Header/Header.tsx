@@ -6,8 +6,9 @@ import Logo from "./Logo/Logo"
 import Navbar from "./Navbar/Navbar"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
+import { Item } from "../../types/navmenu.types"
 
-const itemIds = [
+const itemIds: Item[] = [
   { id: "Home", link: "" },
   { id: "About", link: "about" },
   { id: "Skills", link: "skills" },
@@ -24,7 +25,7 @@ const Header = () => {
     router.push("")
   }, [])
 
-  const handleLink = (item) => {
+  const handleLink = (item: Item) => {
     selected.current = item.link
     router.push({
       pathname: "/",

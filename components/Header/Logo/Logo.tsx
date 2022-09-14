@@ -1,9 +1,13 @@
-import { useRouter } from "next/router"
 import React from "react"
 import styles from "./Logo.module.scss"
 import { motion } from "framer-motion"
+import { Item } from "../../../types/navmenu.types"
 
-const Logo = ({ handleLink }) => {
+interface IProps {
+  handleLink: (item: Item) => void
+}
+
+const Logo: React.FC<IProps> = ({ handleLink }) => {
   const logo_variants = {
     animate: {
       opacity: [0, 1],

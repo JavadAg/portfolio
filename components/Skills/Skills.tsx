@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React from "react"
 import ReactQuery_logo from "../../public/assets/skills/logo1.svg"
 import NextJS_logo from "../../public/assets/skills/logo2.svg"
 import TailwindCSS_logo from "../../public/assets/skills/logo3.svg"
