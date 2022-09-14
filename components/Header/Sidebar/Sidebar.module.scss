@@ -8,6 +8,7 @@
   top: 0px;
   right: 0px;
   bottom: 0px;
+  left: 0px;
   width: 100%;
   z-index: 5;
   background: var(--color-button);
@@ -19,6 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
   flex-direction: column;
 
   > li {
@@ -34,18 +36,6 @@
 
       @include mq.response(sm) {
         font-size: 2.2rem;
-
-        @include mq.response(md) {
-          font-size: 2.4rem;
-
-          @include mq.response(lg) {
-            font-size: 2.6rem;
-
-            @include mq.response(xl) {
-              font-size: 2.8rem;
-            }
-          }
-        }
       }
     }
 
