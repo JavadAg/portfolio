@@ -5,6 +5,7 @@
   position: relative;
   justify-content: center;
   align-items: center;
+  text-align: center;
   overflow: hidden;
   width: 100%;
   flex-direction: column-reverse;
@@ -27,7 +28,6 @@
 
   &:nth-of-type(2n + 1) .item_info {
     grid-column: 7 / -1;
-    text-align: right;
   }
 
   .item_info {
