@@ -33,7 +33,11 @@ const ContactSidebar = () => {
           variants={items}
           transition={{ duration: 0.5, type: "tween" }}
         >
-          <a target={"_blank"} href="https://github.com/JavadAg">
+          <a
+            target={"_blank"}
+            rel="noreferrer"
+            href="https://github.com/JavadAg"
+          >
             Git
           </a>
         </motion.li>
@@ -43,6 +47,7 @@ const ContactSidebar = () => {
         >
           <a
             target={"_blank"}
+            rel="noreferrer"
             href="https://www.linkedin.com/in/javad-aghebati/"
           >
             Linkedin
@@ -54,6 +59,7 @@ const ContactSidebar = () => {
         >
           <a
             target={"_blank"}
+            rel="noreferrer"
             href="mailto:j.aghebati93@gmail.com?Subject=Hello"
           >
             Gmail

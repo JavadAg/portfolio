@@ -41,7 +41,11 @@ const Contact = () => {
           to reach out. I’ll try my best to get back to you!
         </motion.span>
 
-        <a target={"_blank"} href="mailto:j.aghebati93@gmail.com?Subject=Hello">
+        <a
+          target={"_blank"}
+          rel="noreferrer"
+          href="mailto:j.aghebati93@gmail.com?Subject=Hello"
+        >
           SAY HELLO
         </a>
       </motion.div>
