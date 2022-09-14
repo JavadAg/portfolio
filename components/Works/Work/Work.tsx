@@ -2,8 +2,7 @@ import React from "react"
 import styles from "./Work.module.scss"
 import { motion } from "framer-motion"
 import Img, { StaticImageData } from "next/future/image"
-import { CgWebsite } from "react-icons/cg"
-import { FiGithub } from "react-icons/fi"
+import { FiGithub, FiExternalLink } from "react-icons/fi"
 
 interface IProps {
   work: {
@@ -97,11 +96,15 @@ const Work: React.FC<IProps> = ({ work }) => {
         >
           {work.description}
         </motion.span>
-        <motion.div className={styles.work_links}>
-          <a>
-            <CgWebsite />
+        <motion.div
+          custom={work.id & 1}
+          variants={item_info_variants}
+          className={styles.work_links}
+        >
+          <a href={work.website_href} target="_blank" rel="noreferrer">
+            <FiExternalLink />
           </a>
-          <a>
+          <a href={work.git_href} target="_blank" rel="noreferrer">
             <FiGithub />
           </a>
         </motion.div>

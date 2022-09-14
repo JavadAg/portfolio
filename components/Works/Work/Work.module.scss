@@ -92,6 +92,19 @@
     }
 
     .work_links {
+      display: flex;
+      margin: 0.5rem 0;
+      justify-content: center;
+      align-items: center;
+
+      > a {
+        margin: 0 0.5rem;
+        cursor: pointer;
+        > svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
     }
 
     .work_techs {
