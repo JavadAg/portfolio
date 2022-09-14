@@ -22,7 +22,7 @@ const Hero = () => {
   let textRef = useRef<HTMLSpanElement>()
 
   let words = ["Web Developer", "Gamer", "Photographer"],
-    part,
+    part: string,
     i = 0,
     offset = 0,
     len = words.length,
@@ -171,7 +171,7 @@ const Hero = () => {
             initial="initial_left"
             animate="inView"
           >
-            I'm
+            I&apos;m
           </motion.span>
           <motion.span
             transition={{ type: "tween", duration: 1, ease: "easeInOut" }}

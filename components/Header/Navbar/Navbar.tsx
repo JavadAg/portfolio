@@ -1,6 +1,7 @@
 import React from "react"
 import styles from "./Navbar.module.scss"
 import { motion } from "framer-motion"
+import { Item } from "../../../types/navmenu.types"
 
 const Navbar = ({ itemIds, handleLink, selected }) => {
   const list = {
@@ -29,9 +30,10 @@ const Navbar = ({ itemIds, handleLink, selected }) => {
         animate="inView"
         className={styles.navbar_wrapper}
       >
-        {itemIds.map((item) => {
+        {itemIds.map((item: Item) => {
           return (
             <motion.li
+              key={item.id}
               variants={items}
               transition={{ duration: 0.5, type: "tween" }}
               className={

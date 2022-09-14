@@ -57,7 +57,7 @@ interface IProps {
 const Sidebar: React.FC<IProps> = ({ itemIds, handleLink, selected }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
 
-  const navHandler = (item) => {
+  const navHandler = (item: Item) => {
     handleLink(item)
     toggleOpen()
   }
