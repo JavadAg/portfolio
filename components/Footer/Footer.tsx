@@ -1,9 +1,11 @@
 import React from "react"
+import styles from "./Footer.module.scss"
 
 const Footer = () => {
   return (
-    <footer className="bg-[#CDE5D5] xs: xs:top-0 flex justify-center items-center">
-      {/*    <h1 className="text-sm">made by me, myself & i</h1> */}
+    <footer className={styles.footer_container}>
+      <span>made by </span>
+      <span>me, myself & i</span>
     </footer>
   )
 }

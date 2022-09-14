@@ -1,8 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
 import styles from "./Contact.module.scss"
-import { useRouter } from "next/router"
-import Link from "next/link"
 
 const Contact = () => {
   const contact_title_variants = {
