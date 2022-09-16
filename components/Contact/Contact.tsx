@@ -9,15 +9,16 @@ const Contact = () => {
   }
 
   const contact_variants = {
-    initial: { y: 500, opacity: 0 },
+    initial: { scale: 0, opacity: 0 },
     inView: {
       opacity: 1,
-      y: 0
+      scale: 1
     }
   }
 
   return (
     <motion.div
+      viewport={{ once: true }}
       initial="initial"
       whileInView="inView"
       id="contact"
@@ -32,7 +33,6 @@ const Contact = () => {
       <motion.div
         transition={{ duration: 1, type: "tween", ease: "easeOut" }}
         variants={contact_variants}
-        layout
         className={styles.contact_wrapper}
       >
         <motion.span>

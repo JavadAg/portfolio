@@ -4,6 +4,15 @@ import styles from "./Works.module.scss"
 import { motion } from "framer-motion"
 import Work from "./Work/Work"
 import Link from "next/link"
+import {
+  Link as Href,
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller
+} from "react-scroll"
 
 const Works = () => {
   const works_title_variants = {
@@ -12,8 +21,9 @@ const Works = () => {
   }
 
   return (
-    <motion.div id="works" className={styles.works_container}>
+    <Element name="works" className={styles.works_container}>
       <motion.span
+        viewport={{ once: true }}
         initial="initial"
         whileInView="inView"
         variants={works_title_variants}
@@ -28,7 +38,7 @@ const Works = () => {
         })}
       </motion.div>
       <Link href="https://github.com/JavadAg">{"--> Explore more"}</Link>
-    </motion.div>
+    </Element>
   )
 }
 

@@ -7,19 +7,7 @@ import Cv from "../../public/assets/cv.svg"
 const Hero = () => {
   const router = useRouter()
 
-  const [scrollDownBtn, setScrollDownBtn] = useState(true)
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 200) {
-        setScrollDownBtn(false)
-      } else {
-        setScrollDownBtn(true)
-      }
-    })
-  }, [])
-
-  let textRef = useRef<HTMLSpanElement>()
+  let textRef = useRef<HTMLSpanElement>(null)
 
   let words = ["Web Developer", "Gamer", "Photographer"],
     part: string,
@@ -61,7 +49,7 @@ const Hero = () => {
       }
 
       part = words[i].slice(0, offset)
-      textRef.current!.textContent = part
+      textRef!.current!.textContent = part
     }, speed)
   }
 
@@ -117,12 +105,10 @@ const Hero = () => {
           variants={sentence}
           animate="visible"
           initial="hidden"
-          layout
           className={styles.line_1_wrapper}
         >
           {line1.split("").map((char, index) => (
             <motion.span
-              layout
               custom={Math.random() * 1}
               className={styles.line_1}
               key={char + "_" + index}
@@ -137,12 +123,10 @@ const Hero = () => {
           variants={sentence}
           animate="visible"
           initial="hidden"
-          layout
           className={styles.line_2_wrapper}
         >
           {line2.split("").map((char, index) => (
             <motion.span
-              layout
               custom={Math.random() * 1}
               className={styles.line_2}
               key={char + "_" + index}
@@ -152,7 +136,6 @@ const Hero = () => {
             </motion.span>
           ))}
           <motion.span
-            layout
             initial="initial"
             animate="inView"
             variants={sliding_gradient}
@@ -207,28 +190,6 @@ const Hero = () => {
         </span>
         <button>Download Resume</button>
       </motion.div>
-
-      <AnimatePresence>
-        {scrollDownBtn && (
-          <motion.div
-            layout
-            variants={{
-              show: { opacity: [0, 0.2, 0.4, 0.7, 1] },
-              hidden: { opacity: [1, 0.7, 0.5, 0.3, 0] }
-            }}
-            transition={{ duration: 1, type: "tween" }}
-            animate={scrollDownBtn ? "show" : "hidden"}
-            exit="hidden"
-            initial="show"
-            className={styles.arrows}
-            onClick={() => router.push("#about")}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   )
 }

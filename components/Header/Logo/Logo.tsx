@@ -31,7 +31,6 @@ const Logo: React.FC<IProps> = ({ handleLink }) => {
       onClick={handleClick}
     >
       <motion.svg
-        layout
         width="44"
         height="28"
         viewBox="-7 0 80 20"
@@ -39,7 +38,6 @@ const Logo: React.FC<IProps> = ({ handleLink }) => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <motion.path
-          layout
           variants={logo_variants}
           stroke="currentColor"
           strokeWidth="7"
@@ -50,7 +48,6 @@ const Logo: React.FC<IProps> = ({ handleLink }) => {
       c0.4,0,1.9-0.2,3.6-1.1c0.6-0.3,1.6-0.8,2.6-1.9c0.2-0.2,0.9-1,1.4-2.2c0.4-1,0.6-2,0.7-2.8c0.2-2.1,0.2-8-0.1-16.1"
         />
         <motion.ellipse
-          layout
           variants={logo_variants}
           stroke="currentColor"
           strokeWidth="10"
@@ -62,7 +59,6 @@ const Logo: React.FC<IProps> = ({ handleLink }) => {
           ry="0.1"
         />
         <motion.line
-          layout
           variants={logo_variants}
           stroke="currentColor"
           strokeWidth="7"

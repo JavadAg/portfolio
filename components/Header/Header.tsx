@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import styles from "./Header.module.scss"
 import ModeToggle from "./ModeToggle/ModeToggle"
 import Sidebar from "./Sidebar/Sidebar"
@@ -9,42 +9,43 @@ import { motion } from "framer-motion"
 import { Item } from "../../types/navmenu.types"
 
 const itemIds: Item[] = [
-  { id: "Home", link: "" },
-  { id: "About", link: "about" },
-  { id: "Skills", link: "skills" },
-  { id: "Works", link: "works" },
-  { id: "Contact", link: "contact" }
+  { id: "Home", link: "/#home" },
+  { id: "About", link: "/#about" },
+  { id: "Skills", link: "/#skills" },
+  { id: "Works", link: "/#works" },
+  { id: "Contact", link: "/#contact" }
 ]
 
 const Header = () => {
   const router = useRouter()
 
-  let selected = useRef("")
+  const selected = useRef("/")
 
   useEffect(() => {
-    router.push("")
+    router.push("/")
   }, [])
 
   const handleLink = (item: Item) => {
     selected.current = item.link
-    router.push({
-      pathname: "/",
-      hash: item.link
-    })
+    router.push(item.link)
   }
 
   return (
     <header className={styles.header_wrapper}>
       <Logo handleLink={handleLink} />
-      <motion.div className={styles.right_side}>
+      <div className={styles.right_side}>
         <ModeToggle />
         <Sidebar
           itemIds={itemIds}
           handleLink={handleLink}
-          selected={selected}
+          selected={selected.current}
         />
-      </motion.div>
-      <Navbar itemIds={itemIds} handleLink={handleLink} selected={selected} />
+      </div>
+      <Navbar
+        itemIds={itemIds}
+        handleLink={handleLink}
+        selected={selected.current}
+      />
     </header>
   )
 }

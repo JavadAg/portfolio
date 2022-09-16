@@ -69,19 +69,15 @@ const Work: React.FC<IProps> = ({ work }) => {
 
   return (
     <motion.div
-      layout
       initial="hidden"
+      viewport={{ once: true }}
       whileInView="visible"
       custom={work.id & 1}
       variants={single_work_variantss}
       key={work.id}
       className={styles.single_item}
     >
-      <motion.div
-        layout
-        variants={item_info_wrapper}
-        className={styles.item_info}
-      >
+      <motion.div variants={item_info_wrapper} className={styles.item_info}>
         <motion.span
           className={styles.work_title}
           custom={work.id & 1}

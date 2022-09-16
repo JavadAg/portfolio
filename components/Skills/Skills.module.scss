@@ -4,6 +4,10 @@
 .skills_container {
   @include g.section-title("Skills");
 
+  @include mq.response(sm) {
+    min-height: 100vh;
+  }
+
   .skills_wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -29,9 +33,14 @@
     @include mq.response(sm) {
       width: 4.5rem;
       height: 3.75rem;
-      @include mq.response(lg) {
+      @include mq.response(md) {
         width: 4.8rem;
         height: 3.75rem;
+
+        @include mq.response(lg) {
+          width: 5rem;
+          height: 4rem;
+        }
       }
     }
   }

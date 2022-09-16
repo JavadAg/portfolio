@@ -37,17 +37,11 @@ const Navbar = ({ itemIds, handleLink, selected }) => {
               variants={items}
               transition={{ duration: 0.5, type: "tween" }}
               className={
-                item.link === selected.current && styles.navbar_item_active
+                item.link === selected ? styles.navbar_item_active : undefined
               }
               onClick={() => handleLink(item)}
             >
               {item.id}
-              {item.link === selected.current ? (
-                <motion.span
-                  layoutId="nav_arrow"
-                  className={styles.navbar_item_arrow}
-                />
-              ) : null}
             </motion.li>
           )
         })}

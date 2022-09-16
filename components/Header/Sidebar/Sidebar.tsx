@@ -51,7 +51,7 @@ const variants1 = {
 interface IProps {
   handleLink: (item: Item) => void
   itemIds: Item[]
-  selected: React.MutableRefObject<string>
+  selected: string
 }
 
 const Sidebar: React.FC<IProps> = ({ itemIds, handleLink, selected }) => {
@@ -82,7 +82,7 @@ const Sidebar: React.FC<IProps> = ({ itemIds, handleLink, selected }) => {
                 whileHover={{ scale: 1.1 }}
               >
                 {item.id}
-                {item.link === selected.current && (
+                {item.link === selected && (
                   <motion.div
                     layoutId="navbar_arrow"
                     className={styles.sliding_gradient}

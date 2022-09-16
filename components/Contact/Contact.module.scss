@@ -4,6 +4,8 @@
 .contact_container {
   @include g.section-title("Contact");
 
+  min-height: 50vh;
+
   .contact_wrapper {
     display: flex;
     position: relative;

@@ -4,33 +4,32 @@ import Image from "next/future/image"
 import aboutPic from "../../public/my_photo.jpg"
 import { motion } from "framer-motion"
 
+const about_title_variants = {
+  initial: { scale: 0, opacity: 0 },
+  inView: { scale: 1, opacity: 1 }
+}
+
+const paragraph_variants = {
+  initial: { x: -500, opacity: 0 },
+  inView: { x: 0, opacity: 1 }
+}
+
+const my_photo_variants = {
+  initial: { x: 500, opacity: 0 },
+  inView: { x: 0, opacity: 1 }
+}
+
 const About = () => {
-  const about_title_variants = {
-    initial: { scale: 0, opacity: 0 },
-    inView: { scale: 1, opacity: 1 }
-  }
-
-  const paragraph_variants = {
-    initial: { x: -500, opacity: 0 },
-    inView: { x: 0, opacity: 1 }
-  }
-
-  const my_photo_variants = {
-    initial: { x: 500, opacity: 0 },
-    inView: { x: 0, opacity: 1 }
-  }
-
   return (
     <motion.div
-      layout
       initial="initial"
       whileInView="inView"
+      viewport={{ once: true }}
       id="about"
       className={styles.about_container}
     >
       <motion.span
         variants={about_title_variants}
-        layout
         transition={{ duration: 1, type: "tween" }}
       >
         About
@@ -38,7 +37,6 @@ const About = () => {
 
       <div className={styles.about_me}>
         <motion.div
-          layout
           variants={my_photo_variants}
           whileHover={{
             scale: 1.1
@@ -50,7 +48,6 @@ const About = () => {
         </motion.div>
         <motion.p
           variants={paragraph_variants}
-          layout
           transition={{ duration: 1, type: "tween" }}
         >
           Front-end web developer passionate about creating web applications and

@@ -1,7 +1,12 @@
 @use "../../styles/_section_title" as g;
+@use "../../styles/media_query" as mq;
 
 .works_container {
   @include g.section-title("Works");
+
+  @include mq.response(sm) {
+    min-height: 100vh;
+  }
 
   .works {
     display: flex;
