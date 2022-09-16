@@ -41,14 +41,14 @@ const About = () => {
           whileHover={{
             scale: 1.1
           }}
-          transition={{ duration: 1, type: "tween" }}
+          transition={{ duration: 1.5, type: "tween" }}
           className={styles.about_photo}
         >
           <Image src={aboutPic} alt="about_photo" />
         </motion.div>
         <motion.p
           variants={paragraph_variants}
-          transition={{ duration: 1, type: "tween" }}
+          transition={{ duration: 1.5, type: "tween" }}
         >
           Front-end web developer passionate about creating web applications and
           experiences on the web . I started web development since 2021 and
