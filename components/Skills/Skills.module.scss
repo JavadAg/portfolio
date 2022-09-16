@@ -22,6 +22,10 @@
     }
   }
 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
   .skill_item {
     display: block;
     transition: all 500ms ease-in-out;

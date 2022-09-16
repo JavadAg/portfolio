@@ -8,6 +8,10 @@
     min-height: 100vh;
   }
 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
   .about_me {
     display: flex;
     justify-content: center;
