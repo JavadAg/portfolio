@@ -22,7 +22,7 @@ const ContactSidebar = () => {
   }
 
   return (
-    <div className={styles.contact_sidebar_container}>
+    <div className={`section ${styles.contact_sidebar_container}`}>
       <motion.ul
         variants={list}
         initial="initial"

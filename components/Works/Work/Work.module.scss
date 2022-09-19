@@ -7,7 +7,7 @@
   align-items: center;
   text-align: center;
   overflow: hidden;
-  width: 100%;
+  min-width: 100%;
   flex-direction: column-reverse;
   gap: 1rem;
 
@@ -17,7 +17,6 @@
     grid-template-columns: repeat(12, 1fr);
     -webkit-box-align: center;
     align-items: center;
-    border: 2px solid rgba(236, 235, 235, 0.1);
     border-radius: 10px;
     padding: 0.8rem;
   }

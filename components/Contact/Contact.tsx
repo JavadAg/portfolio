@@ -22,7 +22,7 @@ const Contact = () => {
       initial="initial"
       whileInView="inView"
       id="contact"
-      className={styles.contact_container}
+      className={`section ${styles.contact_container}`}
     >
       <motion.span
         transition={{ duration: 1, type: "tween" }}

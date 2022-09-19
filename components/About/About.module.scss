@@ -4,16 +4,9 @@
 .about_container {
   @include g.section-title("About");
 
-  @include mq.response(sm) {
-    min-height: 100vh;
-  }
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
   .about_me {
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     align-items: flex-start;
     width: 100%;
@@ -29,7 +22,16 @@
       line-height: 1.75rem;
       margin: 1rem 1rem;
       text-align: start;
+      max-height: 40vh;
+      overflow-y: auto;
       color: var(--color-text);
+
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+      user-select: none;
 
       @include mq.response(md) {
         margin: 3rem 1rem;
@@ -38,10 +40,9 @@
     }
 
     .about_photo {
-      max-width: 20rem;
+      max-width: 12rem;
       align-self: center;
       cursor: pointer;
-
       @include mq.response(md) {
         max-width: 30rem;
       }

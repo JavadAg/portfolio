@@ -4,32 +4,24 @@
 .skills_container {
   @include g.section-title("Skills");
 
-  @include mq.response(sm) {
-    min-height: 100vh;
-  }
-
   .skills_wrapper {
     display: flex;
     flex-wrap: wrap;
+    flex-grow: 1;
     width: 100%;
-    margin: 3rem 0rem;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
 
     .custom_color_svg {
       fill: var(--color-svg);
     }
   }
 
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
   .skill_item {
     display: block;
     transition: all 500ms ease-in-out;
-    opacity: 0.5;
+    opacity: 1;
     width: 3.5rem;
     height: 3.5rem;
     position: relative;
