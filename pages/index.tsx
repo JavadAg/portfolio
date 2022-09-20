@@ -15,18 +15,23 @@ export default function Home() {
   const Canvas = dynamic(() => import("../components/Canvas/Canvas"), {
     ssr: false
   })
-
+  const anchors = ["home", "about", "skills", "works", "contact"]
+  const fpApi = useRef(null)
   return (
     <div className={styles.layout}>
-      <Header />
+      <Header fullpageApi={fpApi.current} />
       <ContactSidebar />
       <Canvas />
       <main className={styles.main}>
         <ReactFullpage
+          menu="#nav_menu"
+          anchors={anchors}
           licenseKey="gplv3-license"
           verticalCentered={false}
-          scrollOverflow={false}
-          render={() => {
+          scrollOverflow={true}
+          render={({ state, fullpageApi }) => {
+            fpApi.current = fullpageApi
+
             return (
               <>
                 <Hero />
@@ -39,7 +44,6 @@ export default function Home() {
           }}
         />
       </main>
-      <Footer />
     </div>
   )
 }

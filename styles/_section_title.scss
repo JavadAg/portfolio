@@ -1,25 +1,27 @@
+@use "../styles/_media_query.scss" as mq;
+
 @mixin section-title($title) {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   text-align: center;
   min-height: 100vh;
-  padding-top: 4rem;
+  padding-top: 4.5rem;
   gap: 1rem;
   transition: all 300ms ease-in-out;
   color: var(--color-text);
 
-  > div:has(a) {
-    display: none;
+  @include mq.response(sm) {
+    padding-top: 5rem;
   }
 
   > span {
     font-size: 2rem;
-    flex-shrink: 0;
     font-weight: 700;
     z-index: 5;
+    flex-shrink: 0;
     position: relative;
     margin-left: 2rem;
   }

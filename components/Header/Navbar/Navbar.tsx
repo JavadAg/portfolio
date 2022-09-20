@@ -26,6 +26,7 @@ const Navbar = ({ itemIds, handleLink, selected }) => {
     <div className={styles.navbar_container}>
       <motion.ul
         variants={list}
+        id="nav_menu"
         initial="initial"
         animate="inView"
         className={styles.navbar_wrapper}
@@ -34,6 +35,7 @@ const Navbar = ({ itemIds, handleLink, selected }) => {
           return (
             <motion.li
               key={item.id}
+              data-menuanchor={item.link}
               variants={items}
               transition={{ duration: 0.5, type: "tween" }}
               className={

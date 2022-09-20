@@ -13,7 +13,7 @@ const sidebar = {
     }
   }),
   closed: {
-    clipPath: "circle(2px at 100% 35px)",
+    clipPath: "circle(2px at 100% 30px)",
     transition: {
       delay: 0.5,
       duration: 0.7,
@@ -67,16 +67,21 @@ const Sidebar: React.FC<IProps> = ({ itemIds, handleLink, selected }) => {
       <SidebarToggle toggle={() => toggleOpen()} isOpen={isOpen} />
 
       <motion.div
-        initial="close"
+        initial={false}
         animate={isOpen ? "open" : "closed"}
         className={styles.sidebar_container}
         variants={sidebar}
       >
-        <motion.ul className={styles.sidebar_items} variants={variants}>
+        <motion.ul
+          id="nav_menu"
+          className={styles.sidebar_items}
+          variants={variants}
+        >
           {itemIds.map((item) => {
             return (
               <motion.li
                 key={item.id}
+                data-menuanchor={item.link}
                 onClick={() => navHandler(item)}
                 variants={variants1}
                 whileHover={{ scale: 1.1 }}

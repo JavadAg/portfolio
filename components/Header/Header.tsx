@@ -9,14 +9,14 @@ import { motion } from "framer-motion"
 import { Item } from "../../types/navmenu.types"
 
 const itemIds: Item[] = [
-  { id: "Home", link: "/#home" },
-  { id: "About", link: "/#about" },
-  { id: "Skills", link: "/#skills" },
-  { id: "Works", link: "/#works" },
-  { id: "Contact", link: "/#contact" }
+  { id: "Home", link: "home" },
+  { id: "About", link: "about" },
+  { id: "Skills", link: "skills" },
+  { id: "Works", link: "works" },
+  { id: "Contact", link: "contact" }
 ]
 
-const Header = () => {
+const Header = ({ fullpageApi }) => {
   const router = useRouter()
 
   const selected = useRef("/")
@@ -26,8 +26,9 @@ const Header = () => {
   }, [])
 
   const handleLink = (item: Item) => {
-    selected.current = item.link
-    router.push(item.link)
+    /*  selected.current = item.link
+    router.push(`#${item.link}`) */
+    fullpageApi.moveTo(item.link)
   }
 
   return (

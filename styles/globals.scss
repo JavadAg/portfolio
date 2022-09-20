@@ -8,21 +8,18 @@ html {
   -webkit-text-size-adjust: 100%;
 
   ::-webkit-scrollbar {
-    height: 0.2rem;
-    width: 0.2rem;
+    height: 0rem;
+    width: 0rem;
   }
 
-  /* Track */
   ::-webkit-scrollbar-track {
     background: var(--color-text);
   }
 
-  /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #700fe6;
   }
 
-  /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #6900e9;
   }
@@ -31,7 +28,6 @@ html {
 body {
   padding: 0;
   margin: 0;
-
   font-family: "Heebo", sans-serif;
   position: relative;
   -ms-overflow-style: none;
@@ -146,6 +142,10 @@ a {
 ::before,
 ::after {
   box-sizing: border-box;
+}
+
+.fp-watermark {
+  display: none;
 }
 
 $dark_background: #0f0f14;

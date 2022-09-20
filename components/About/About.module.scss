@@ -8,7 +8,7 @@
     display: flex;
     flex-grow: 1;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     position: relative;
     flex-direction: column;
@@ -20,18 +20,19 @@
     > p {
       font-size: 1.1rem;
       line-height: 1.75rem;
-      margin: 1rem 1rem;
+      /* height: 40vh; */
+      /* flex-grow: 1; */
+      margin: 1rem 0rem;
       text-align: start;
-      max-height: 40vh;
-      overflow-y: auto;
+      /* overflow-y: auto; */
       color: var(--color-text);
 
-      -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-      -khtml-user-select: none; /* Konqueror HTML */
-      -moz-user-select: none; /* Old versions of Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-      user-select: none;
+      /*  -webkit-touch-callout: text;
+      -webkit-user-select: text;
+      -khtml-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text; */
 
       @include mq.response(md) {
         margin: 3rem 1rem;

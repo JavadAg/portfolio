@@ -99,8 +99,8 @@ const Hero = () => {
   }, [])
 
   return (
-    <div className="section">
-      <div id="home" className={`${styles.hero_container}`}>
+    <div className="section fp-noscroll">
+      <div className={`${styles.hero_container}`}>
         <div className={styles.hero_texts}>
           <motion.div
             variants={sentence}

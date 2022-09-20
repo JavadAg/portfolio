@@ -11,12 +11,12 @@
     width: 100%;
     font-weight: 500;
     font-size: 1rem;
-    margin: 3rem 0rem;
+    margin: 0rem 0 0 0;
     z-index: 5;
     line-height: 1.5rem;
     align-items: center;
     flex-direction: column;
-    gap: 70px;
+    gap: 3rem;
 
     > span {
       @include mq.response(sm) {

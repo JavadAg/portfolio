@@ -22,21 +22,23 @@ const my_photo_variants = {
 const About = () => {
   return (
     <div className="section">
-      <motion.div
-        initial="initial"
-        whileInView="inView"
-        viewport={{ once: true }}
-        id="about"
-        className={`${styles.about_container}`}
-      >
+      <motion.div /* id="about" */ className={`${styles.about_container}`}>
         <motion.span
+          initial="initial"
+          whileInView="inView"
+          viewport={{ once: true }}
           variants={about_title_variants}
           transition={{ duration: 1, type: "tween" }}
         >
           About
         </motion.span>
-
-        <div className={`${styles.about_me}`}>
+        <motion.div
+          initial="initial"
+          whileInView="inView"
+          viewport={{ once: true }}
+          variants={about_title_variants}
+          className={`${styles.about_me}`}
+        >
           <motion.div
             variants={my_photo_variants}
             transition={{ duration: 1.5, type: "tween" }}
@@ -45,6 +47,7 @@ const About = () => {
             <Image src={aboutPic} alt="about_photo" />
           </motion.div>
           <motion.p
+            id="about_me_text"
             variants={paragraph_variants}
             transition={{ duration: 1.5, type: "tween" }}
           >
@@ -59,7 +62,8 @@ const About = () => {
             my projects. Make sure you click on each project to see the tools I
             used and other interesting information.
           </motion.p>
-        </div>
+        </motion.div>
+        <div></div>
       </motion.div>
     </div>
   )

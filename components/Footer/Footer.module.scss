@@ -1,8 +1,12 @@
 .footer_container {
   display: block;
+  align-self: center;
   font-size: 0.875rem;
 
+  :nth-child(1) {
+    color: rgb(134, 134, 134);
+  }
   :nth-child(2) {
-    color: rgb(147, 80, 255);
+    color: rgb(141, 92, 255);
   }
 }

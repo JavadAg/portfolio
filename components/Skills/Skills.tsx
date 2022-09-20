@@ -47,8 +47,8 @@ const skill_icons_variantss = {
 
 const Skills = () => {
   return (
-    <div className="section">
-      <motion.div className={`${styles.skills_container}`} id="skills">
+    <div className="section fp-noscroll">
+      <motion.div className={`${styles.skills_container}`}>
         <motion.span
           initial="initial"
           viewport={{ once: true }}
@@ -58,90 +58,105 @@ const Skills = () => {
         >
           Skills
         </motion.span>
-        <motion.div
-          variants={icons_wrapper}
-          viewport={{ once: true }}
-          whileInView="visible"
-          initial="hidden"
-          className={styles.skills_wrapper}
-        >
+        <div className={styles.skills_wrapper}>
           <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
+            variants={icons_wrapper}
+            viewport={{ once: true }}
+            whileInView="visible"
+            initial="hidden"
+            className={styles.skills}
           >
-            <Js_logo className={styles.skill_item} />
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_js}
+            >
+              <Js_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_ts}
+            >
+              <TS_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_react}
+            >
+              <React_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_next}
+            >
+              <NextJS_logo
+                className={`${styles.skill_item} ${styles.custom_color_svg}`}
+              />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_html}
+            >
+              <Html_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_css}
+            >
+              <Css_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_tw}
+            >
+              <TailwindCSS_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_bs}
+            >
+              <BootS_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_sass}
+            >
+              <Sass_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_rtk}
+            >
+              <Rtk_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_rq}
+            >
+              <ReactQuery_logo className={styles.skill_item} />
+            </motion.div>
+            <motion.div
+              custom={Math.random() * 1}
+              variants={skill_icons_variantss}
+              className={styles.skill_git}
+            >
+              <Git_logo
+                className={`${styles.skill_item} ${styles.custom_color_svg}`}
+              />
+            </motion.div>
           </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <TS_logo className={styles.skill_item} />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <React_logo className={styles.skill_item} />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <NextJS_logo
-              className={`${styles.skill_item} ${styles.custom_color_svg}`}
-            />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <Html_logo className={styles.skill_item} />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <Css_logo className={styles.skill_item} />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <TailwindCSS_logo className={styles.skill_item} />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <BootS_logo className={styles.skill_item} />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <Sass_logo className={styles.skill_item} />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <Rtk_logo className={styles.skill_item} />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <ReactQuery_logo className={styles.skill_item} />
-          </motion.div>
-          <motion.div
-            custom={Math.random() * 1}
-            variants={skill_icons_variantss}
-          >
-            <Git_logo
-              className={`${styles.skill_item} ${styles.custom_color_svg}`}
-            />
-          </motion.div>
-        </motion.div>
+        </div>
+        <div></div>
       </motion.div>
     </div>
   )

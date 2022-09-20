@@ -2,10 +2,9 @@ import React, { useState } from "react"
 import works from "../../data/works_data"
 import styles from "./Works.module.scss"
 import { AnimatePresence, motion } from "framer-motion"
-/* import Work from "./Work/Work" */
 import Link from "next/link"
 import { wrap } from "popmotion"
-import Img, { StaticImageData } from "next/future/image"
+import Img from "next/future/image"
 import { FiGithub, FiExternalLink } from "react-icons/fi"
 
 const works_title_variants = {
@@ -34,27 +33,10 @@ const variants = {
   }
 }
 
-const single_work_variantss = {
-  hidden: (custom: number) => ({
-    opacity: 0,
-    x: custom === 0 ? -200 : 200
-  }),
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 1,
-      type: "tween",
-      ease: "easeInOut",
-      when: "beforeChildren"
-    }
-  }
-}
-
 const item_info_wrapper = {
-  hidden: (custom: number) => ({
+  hidden: (direction: number) => ({
     opacity: 0,
-    x: custom === 0 ? -200 : 200
+    x: direction > 0 ? -200 : 200
   }),
   visible: {
     opacity: 1,
@@ -69,9 +51,9 @@ const item_info_wrapper = {
 }
 
 const item_info_variants = {
-  hidden: (custom: number) => ({
+  hidden: (direction: number) => ({
     opacity: 0,
-    x: custom === 0 ? -400 : 400
+    x: direction < 0 ? -400 : 400
   }),
   visible: {
     opacity: 1,
@@ -90,17 +72,17 @@ const swipePower = (offset: number, velocity: number) => {
 }
 
 const Works = () => {
-  const [[page, direction], setPage] = useState([0, 0])
+  const [[card, direction], setPage] = useState([0, 0])
 
-  const cardIndex = wrap(0, works.length, page)
+  const cardIndex = wrap(0, works.length, card)
 
   const paginate = (newDirection: number) => {
-    setPage([page + newDirection, newDirection])
+    setPage([card + newDirection, newDirection])
   }
 
   return (
-    <div className="section">
-      <div id="works" className={`${styles.works_container}`}>
+    <div /* id="works"  */ className="section fp-noscroll">
+      <div className={`${styles.works_container}`}>
         <motion.span
           viewport={{ once: true }}
           initial="initial"
@@ -114,7 +96,7 @@ const Works = () => {
         <div className={styles.works_wrapper}>
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
-              key={page}
+              key={card}
               custom={direction}
               variants={variants}
               initial="enter"
@@ -139,23 +121,36 @@ const Works = () => {
               className={styles.work_card}
             >
               <motion.div
+                initial="hidden"
+                custom={direction}
+                whileInView="visible"
                 variants={item_info_wrapper}
                 className={styles.item_info}
               >
+                <motion.div
+                  variants={item_info_variants}
+                  custom={direction}
+                  className={styles.item_image_wrapper}
+                >
+                  <Img alt="work_img" src={works[cardIndex].imgSrc} />
+                </motion.div>
                 <motion.span
                   className={styles.work_title}
+                  custom={direction}
                   variants={item_info_variants}
                 >
                   {works[cardIndex].title}
                 </motion.span>
                 <motion.span
                   className={styles.work_desc}
+                  custom={direction}
                   variants={item_info_variants}
                 >
                   {works[cardIndex].description}
                 </motion.span>
                 <motion.div
                   variants={item_info_variants}
+                  custom={direction}
                   className={styles.work_links}
                 >
                   <a
@@ -175,27 +170,29 @@ const Works = () => {
                 </motion.div>
                 <motion.div
                   className={styles.work_techs}
+                  custom={direction}
                   variants={item_info_variants}
                 >
                   {works[cardIndex].techs.map((tech, index) => (
                     <span key={index}>{tech}</span>
                   ))}
                 </motion.div>
-                <motion.div className={styles.item_image_wrapper}>
-                  <Img alt="work_img" src={works[cardIndex].imgSrc} />
-                </motion.div>
               </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>
-
-        <div className={styles.next} onClick={() => paginate(1)}>
-          {"‣"}
+        <div className={styles.works_bottom}>
+          <div className={styles.card_arrow}>
+            {works.map((item, index) => (
+              <div
+                className={`${card === index ? styles.active_dot : undefined} ${
+                  styles.dot
+                }`}
+              />
+            ))}
+          </div>
+          <Link href="https://github.com/JavadAg">{"--> Explore more"}</Link>
         </div>
-        <div className={styles.prev} onClick={() => paginate(-1)}>
-          {"‣"}
-        </div>
-        <Link href="https://github.com/JavadAg">{"--> Explore more"}</Link>
       </div>
     </div>
   )
