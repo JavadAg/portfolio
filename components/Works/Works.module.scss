@@ -115,7 +115,7 @@
 
             @include mq.response(sm) {
               font-size: 0.85rem;
-              background-color: #1f1f1f6b;
+              background-color: var(--color-work_desktop);
               padding: 1rem;
               border-radius: 3px;
               backdrop-filter: blur(2px);
@@ -137,7 +137,7 @@
             width: 85%;
 
             @include mq.response(sm) {
-              width: 100%;
+              width: 150%;
               position: absolute;
 
               @include mq.response(md) {
@@ -159,7 +159,7 @@
             -o-user-drag: none;
 
             @include mq.response(sm) {
-              width: 130%;
+              width: 150%;
             }
           }
         }
@@ -170,10 +170,11 @@
           height: 100%;
           display: block;
           position: absolute;
-          background-color: #00000031;
+
+          background-color: var(--color-work_mobile);
 
           @include mq.response(sm) {
-            background-color: #000000a8;
+            background-color: var(--color-work_desktop);
             backdrop-filter: blur(2px);
           }
         }
