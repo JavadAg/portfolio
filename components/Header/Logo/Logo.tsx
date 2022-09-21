@@ -18,17 +18,13 @@ const Logo: React.FC<IProps> = ({ handleLink }) => {
     }
   }
 
-  const handleClick = () => {
-    handleLink({ link: "" })
-  }
-
   return (
     <motion.a
       className={styles.logo_wrapper}
       initial={false}
       animate="animate"
       whileTap="animate"
-      onClick={handleClick}
+      onClick={() => handleLink({ link: "home" })}
     >
       <motion.svg
         width="44"
