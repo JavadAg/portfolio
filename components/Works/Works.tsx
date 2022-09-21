@@ -185,6 +185,7 @@ const Works = () => {
           <div className={styles.card_arrow}>
             {works.map((item, index) => (
               <div
+                key={item.id}
                 className={`${card === index ? styles.active_dot : undefined} ${
                   styles.dot
                 }`}

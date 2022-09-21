@@ -148,6 +148,10 @@ a {
   display: none;
 }
 
+li.active {
+  color: #6900e9;
+}
+
 $dark_background: #0f0f14;
 $dark_text_color: rgb(223, 225, 226);
 $dark_text_color_secondary: rgb(145, 145, 145);

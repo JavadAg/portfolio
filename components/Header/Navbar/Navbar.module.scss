@@ -12,6 +12,7 @@
   right: 20px;
   color: var(--color-text_secondary);
   width: 70px;
+
   .navbar_wrapper {
     display: flex;
     list-style: none;
@@ -28,20 +29,6 @@
       align-items: center;
       cursor: pointer;
       position: relative;
-
-      .navbar_item_arrow {
-        position: absolute;
-        left: 1.25rem;
-        width: 0.5rem;
-        z-index: -2;
-        height: 3rem;
-        background-color: #8453ff4b;
-        border-radius: 2px;
-      }
-    }
-
-    .navbar_item_active {
-      color: #782fffe3;
     }
   }
 

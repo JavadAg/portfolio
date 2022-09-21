@@ -3,7 +3,12 @@ import styles from "./Navbar.module.scss"
 import { motion } from "framer-motion"
 import { Item } from "../../../types/navmenu.types"
 
-const Navbar = ({ itemIds, handleLink, selected }) => {
+interface IProps {
+  handleLink: (item: Item) => void
+  itemIds: Item[]
+}
+
+const Navbar: React.FC<IProps> = ({ itemIds, handleLink }) => {
   const list = {
     initial: { opacity: 0 },
     inView: {
@@ -23,7 +28,7 @@ const Navbar = ({ itemIds, handleLink, selected }) => {
   }
 
   return (
-    <div className={styles.navbar_container}>
+    <div id="navbar" className={styles.navbar_container}>
       <motion.ul
         variants={list}
         id="nav_menu"
@@ -38,9 +43,6 @@ const Navbar = ({ itemIds, handleLink, selected }) => {
               data-menuanchor={item.link}
               variants={items}
               transition={{ duration: 0.5, type: "tween" }}
-              className={
-                item.link === selected ? styles.navbar_item_active : undefined
-              }
               onClick={() => handleLink(item)}
             >
               {item.id}

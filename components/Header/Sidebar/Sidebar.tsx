@@ -3,6 +3,7 @@ import styles from "./Sidebar.module.scss"
 import { motion, useCycle } from "framer-motion"
 import { SidebarToggle } from "./SidebarToggle/SidebarToggle"
 import { Item } from "../../../types/navmenu.types"
+import { fullpageApi } from "@fullpage/react-fullpage"
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -51,10 +52,9 @@ const variants1 = {
 interface IProps {
   handleLink: (item: Item) => void
   itemIds: Item[]
-  selected: string
 }
 
-const Sidebar: React.FC<IProps> = ({ itemIds, handleLink, selected }) => {
+const Sidebar: React.FC<IProps> = ({ itemIds, handleLink }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
 
   const navHandler = (item: Item) => {
@@ -87,12 +87,6 @@ const Sidebar: React.FC<IProps> = ({ itemIds, handleLink, selected }) => {
                 whileHover={{ scale: 1.1 }}
               >
                 {item.id}
-                {item.link === selected && (
-                  <motion.div
-                    layoutId="navbar_arrow"
-                    className={styles.sliding_gradient}
-                  />
-                )}
               </motion.li>
             )
           })}
