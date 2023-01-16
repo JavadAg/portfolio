@@ -4,7 +4,7 @@ import styles from "./Works.module.scss"
 import { AnimatePresence, motion } from "framer-motion"
 import Link from "next/link"
 import { wrap } from "popmotion"
-import Img from "next/future/image"
+import Img from "next/image"
 import { FiGithub, FiExternalLink } from "react-icons/fi"
 
 const works_title_variants = {

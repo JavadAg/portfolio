@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./About.module.scss"
-import Image from "next/future/image"
+import Image from "next/image"
 import aboutPic from "../../public/my_photo.jpg"
 import { motion } from "framer-motion"
 

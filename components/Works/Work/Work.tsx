@@ -1,7 +1,7 @@
 import React from "react"
 import styles from "./Work.module.scss"
 import { motion } from "framer-motion"
-import Img, { StaticImageData } from "next/future/image"
+import Img, { StaticImageData } from "next/image"
 import { FiGithub, FiExternalLink } from "react-icons/fi"
 
 interface IProps {
