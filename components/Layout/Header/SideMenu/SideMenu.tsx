@@ -1,24 +1,23 @@
-import React from "react"
-import styles from "./Sidebar.module.scss"
-import { motion, useCycle } from "framer-motion"
-import { SidebarToggle } from "./SidebarToggle/SidebarToggle"
-import { Item } from "../../../types/navmenu.types"
-import { fullpageApi } from "@fullpage/react-fullpage"
+import React from 'react'
+import styles from './SideMenu.module.scss'
+import { motion, useCycle } from 'framer-motion'
+import { Item } from '../../../../types/navmenu.types'
+import { SideMenuToggle } from './SideMenuToggle/SideMenuToggle'
 
-const sidebar = {
+const sidemenu = {
   open: (height = 1000) => ({
     clipPath: `circle(${height * 2 + 200}px at 100% 35px)`,
     transition: {
-      type: "tween",
+      type: 'tween',
       duration: 0.7
     }
   }),
   closed: {
-    clipPath: "circle(2px at 100% 30px)",
+    clipPath: 'circle(2px at 100% 30px)',
     transition: {
       delay: 0.5,
       duration: 0.7,
-      type: "tween"
+      type: 'tween'
     }
   }
 }
@@ -50,30 +49,31 @@ const variants1 = {
 }
 
 interface IProps {
-  handleLink: (item: Item) => void
   itemIds: Item[]
 }
 
-const Sidebar: React.FC<IProps> = ({ itemIds, handleLink }) => {
+const SideMenu: React.FC<IProps> = ({ itemIds }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
 
   const navHandler = (item: Item) => {
-    handleLink(item)
     toggleOpen()
   }
 
   return (
     <>
-      <SidebarToggle toggle={() => toggleOpen()} isOpen={isOpen} />
+      <SideMenuToggle
+        toggle={() => toggleOpen()}
+        isOpen={isOpen}
+      />
 
       <motion.div
         initial={false}
-        animate={isOpen ? "open" : "closed"}
+        animate={isOpen ? 'open' : 'closed'}
         className={styles.sidebar_container}
-        variants={sidebar}
+        variants={sidemenu}
       >
         <motion.ul
-          id="nav_menu"
+          id='nav_menu'
           className={styles.sidebar_items}
           variants={variants}
         >
@@ -86,7 +86,12 @@ const Sidebar: React.FC<IProps> = ({ itemIds, handleLink }) => {
                 variants={variants1}
                 whileHover={{ scale: 1.1 }}
               >
-                {item.id}
+                <a
+                  ref={React.createRef()}
+                  href={item.link}
+                >
+                  {item.id}
+                </a>
               </motion.li>
             )
           })}
@@ -96,4 +101,4 @@ const Sidebar: React.FC<IProps> = ({ itemIds, handleLink }) => {
   )
 }
 
-export default Sidebar
+export default SideMenu

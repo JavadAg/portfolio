@@ -1,8 +1,8 @@
-@use "../../styles/_section_title" as g;
-@use "../../styles/media_query" as mq;
+@use '../../styles/_section_title' as g;
+@use '../../styles/media_query' as mq;
 
 .about_container {
-  @include g.section-title("About");
+  @include g.section-title('About');
 
   .about_me {
     display: flex;
@@ -10,6 +10,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding: 0 2rem;
     position: relative;
     flex-direction: column;
 
@@ -20,19 +21,10 @@
     > p {
       font-size: 1.1rem;
       line-height: 1.75rem;
-      /* height: 40vh; */
-      /* flex-grow: 1; */
       margin: 1rem 0rem;
+      font-weight: 200;
       text-align: start;
-      /* overflow-y: auto; */
       color: var(--color-text);
-
-      /*  -webkit-touch-callout: text;
-      -webkit-user-select: text;
-      -khtml-user-select: text;
-      -moz-user-select: text;
-      -ms-user-select: text;
-      user-select: text; */
 
       @include mq.response(md) {
         margin: 3rem 1rem;

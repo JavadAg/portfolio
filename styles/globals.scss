@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
 html {
   scroll-behavior: smooth;
   -moz-tab-size: 4;
@@ -28,109 +26,13 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Heebo", sans-serif;
+  font-family: 'Heebo', sans-serif;
   position: relative;
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
   }
-}
-
-hr {
-  height: 0;
-  color: inherit;
-}
-
-abbr[title] {
-  text-decoration: underline dotted;
-}
-
-code,
-kbd,
-samp,
-pre {
-  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo,
-    monospace;
-  font-size: 1em;
-}
-
-small {
-  font-size: 80%;
-}
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
-}
-
-::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-:-moz-ui-invalid {
-  box-shadow: none;
-}
-
-legend {
-  padding: 0;
-}
-
-progress {
-  vertical-align: baseline;
-}
-
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-  height: auto;
-}
-
-::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
 }
 
 a {
@@ -142,14 +44,6 @@ a {
 ::before,
 ::after {
   box-sizing: border-box;
-}
-
-.fp-watermark {
-  display: none;
-}
-
-li.active {
-  color: #6900e9;
 }
 
 $dark_background: #0f0f14;
@@ -170,7 +64,7 @@ $svg_color: rgb(3, 3, 3);
 $work_background_mobile: #ffffff31;
 $work_background_desktop: #e0e0e0b6;
 
-html[data-theme="light"] {
+html[data-theme='light'] {
   --color-text: #{$text-color};
   --color-background: #{$background};
   --color-text_secondary: #{$text-color_secondary};
@@ -181,7 +75,7 @@ html[data-theme="light"] {
   --color-work_desktop: #{$work_background_desktop};
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --color-text: #{$dark_text-color};
   --color-background: #{$dark_background};
   --color-text_secondary: #{$dark_text-color_secondary};

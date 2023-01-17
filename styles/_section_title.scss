@@ -1,4 +1,4 @@
-@use "../styles/_media_query.scss" as mq;
+@use '../styles/_media_query.scss' as mq;
 
 @mixin section-title($title) {
   position: relative;
@@ -14,7 +14,7 @@
   color: var(--color-text);
 
   @include mq.response(sm) {
-    padding-top: 5rem;
+    padding: 6rem 0;
   }
 
   > span {
@@ -27,7 +27,7 @@
   }
 
   > span::before {
-    content: "";
+    content: '';
     position: absolute;
     left: -2rem;
     top: 1rem;

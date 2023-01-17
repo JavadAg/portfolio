@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.31",
+    "@makotot/ghostui": "^2.0.0",
+    "@next/font": "^13.1.2",
     "@svgr/webpack": "^6.5.1",
     "framer-motion": "^8.4.3",
     "next": "^13.1.2",
@@ -18,7 +20,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
-    "react-scroll": "^1.8.9"
+    "react-scroll": "^1.8.9",
+    "react-scrollspy-navigation": "^1.0.3"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

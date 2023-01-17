@@ -1,36 +1,40 @@
-@use "../../styles/_media_query.scss" as mq;
+@use '../../../styles/_media_query.scss' as mq;
 
-.contact_sidebar_container {
+.navbar_container {
   display: none;
   position: fixed;
   bottom: 0px;
   top: 0px;
   align-items: center;
   justify-content: center;
+  writing-mode: vertical-rl;
   z-index: 5;
-  left: 20px;
+  right: 20px;
   color: var(--color-text_secondary);
   width: 70px;
-  
-  .contact_sidebar_wrapper {
+
+  .navbar_wrapper {
     display: flex;
     list-style: none;
     position: relative;
     justify-content: center;
     font-size: 1rem;
-    writing-mode: vertical-lr;
     gap: 50px;
-    padding: 0;
+    padding: 1rem 0;
     align-items: center;
 
-    > li {
+    .active_link {
+      color: #7317e4;
       transition: all 500ms ease-in-out;
-      cursor: pointer;
+    }
 
-      &:hover {
-        color: #782fffe3;
-        transition: all 500ms ease-in-out;
-      }
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      font-weight: 300;
     }
   }
 

@@ -1,8 +1,8 @@
-import React from "react"
-import styles from "./Work.module.scss"
-import { motion } from "framer-motion"
-import Img, { StaticImageData } from "next/image"
-import { FiGithub, FiExternalLink } from "react-icons/fi"
+import React from 'react'
+import styles from './Work.module.scss'
+import { motion } from 'framer-motion'
+import Img, { StaticImageData } from 'next/image'
+import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
 interface IProps {
   work: {
@@ -27,9 +27,9 @@ const Work: React.FC<IProps> = ({ work }) => {
       x: 0,
       transition: {
         duration: 1,
-        type: "tween",
-        ease: "easeInOut",
-        when: "beforeChildren"
+        type: 'tween',
+        ease: 'easeInOut',
+        when: 'beforeChildren'
       }
     }
   }
@@ -45,7 +45,7 @@ const Work: React.FC<IProps> = ({ work }) => {
       transition: {
         duration: 0,
         delay: 0,
-        when: "beforeChildren",
+        when: 'beforeChildren',
         staggerChildren: 0.2
       }
     }
@@ -61,23 +61,26 @@ const Work: React.FC<IProps> = ({ work }) => {
       x: 0,
       transition: {
         duration: 0.5,
-        type: "tween",
-        ease: "easeInOut"
+        type: 'tween',
+        ease: 'easeInOut'
       }
     }
   }
 
   return (
     <motion.div
-      initial="hidden"
+      initial='hidden'
       viewport={{ once: true }}
-      whileInView="visible"
+      whileInView='visible'
       custom={work.id & 1}
       variants={single_work_variantss}
       key={work.id}
       className={styles.single_item}
     >
-      <motion.div variants={item_info_wrapper} className={styles.item_info}>
+      <motion.div
+        variants={item_info_wrapper}
+        className={styles.item_info}
+      >
         <motion.span
           className={styles.work_title}
           custom={work.id & 1}
@@ -97,10 +100,18 @@ const Work: React.FC<IProps> = ({ work }) => {
           variants={item_info_variants}
           className={styles.work_links}
         >
-          <a href={work.website_href} target="_blank" rel="noreferrer">
+          <a
+            href={work.website_href}
+            target='_blank'
+            rel='noreferrer'
+          >
             <FiExternalLink />
           </a>
-          <a href={work.git_href} target="_blank" rel="noreferrer">
+          <a
+            href={work.git_href}
+            target='_blank'
+            rel='noreferrer'
+          >
             <FiGithub />
           </a>
         </motion.div>
@@ -115,7 +126,10 @@ const Work: React.FC<IProps> = ({ work }) => {
         </motion.div>
       </motion.div>
       <motion.div className={styles.item_image_wrapper}>
-        <Img alt="work_img" src={work.imgSrc} />
+        <Img
+          alt='work_img'
+          src={work.imgSrc}
+        />
       </motion.div>
     </motion.div>
   )

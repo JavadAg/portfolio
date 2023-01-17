@@ -1,14 +1,13 @@
-@use "../../styles/_media_query.scss" as mq;
+@use '../../../styles/_media_query.scss' as mq;
 
 .header_wrapper {
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 0;
-  z-index: 6;
+  z-index: 2;
   height: 3rem;
   justify-content: space-between;
   background-color: var(--color-background);
-
   align-items: center;
   padding: 0rem 1rem;
   width: 100%;

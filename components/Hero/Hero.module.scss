@@ -1,4 +1,4 @@
-@use "../../styles/_media_query.scss" as mq;
+@use '../../styles/_media_query.scss' as mq;
 
 .hero_container {
   display: flex;
@@ -7,8 +7,6 @@
   min-height: 100vh;
   flex-direction: column;
   width: 100%;
-  position: relative;
-  min-height: 100vh;
 
   .hero_texts {
     z-index: 4;
@@ -27,28 +25,27 @@
     width: 95%;
 
     .line_1_wrapper {
-      margin-right: calc(2rem + (50vw));
       font-size: 2rem;
       font-weight: 200;
+      margin-right: calc(2rem + (50vw));
 
       @include mq.response(xs) {
+        width: 80%;
+        align-self: center;
+        margin-right: 0;
         font-size: 2.5rem;
-        margin-right: 20rem;
 
         @include mq.response(sm) {
           font-size: 2.8rem;
 
           @include mq.response(md) {
             font-size: 3rem;
-            margin-right: 30rem;
 
             @include mq.response(lg) {
               font-size: 3.2rem;
-              margin-right: 37rem;
 
               @include mq.response(xl) {
                 font-size: 3.6rem;
-                margin-right: 45rem;
               }
             }
           }
@@ -77,6 +74,7 @@
         position: relative;
         font-size: 2.5rem;
         font-weight: 700;
+        z-index: 9999999;
         display: inline-block;
         text-align: center;
 
@@ -101,38 +99,37 @@
         }
       }
 
-      :nth-child(8)::after {
+      .sliding_gradient {
         position: absolute;
         display: block;
-        content: "";
         z-index: -1;
-        bottom: 0.2rem;
-        left: -1rem;
-        width: 7ch;
+        bottom: 0rem;
+        right: -1rem;
+        width: 55%;
         height: 40%;
         background-image: linear-gradient(
           -225deg,
-          #ac32e4 0%,
-          #7918f2 48%,
-          #4801ff 100%
+          #ac32e4b9 0%,
+          #7a18f2a9 48%,
+          #4901ff9d 100%
         );
+        opacity: 70%;
       }
     }
 
-    .typing_slider_wrapper {
+    .line_3_wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 2rem;
 
-      .typing_slider {
-        border-right: 0.35rem solid;
+      .line_3 {
         background-image: linear-gradient(
           -225deg,
-          #ac32e4 0%,
-          #7918f2 48%,
-          #4801ff 100%
+          #ac32e4b0 0%,
+          #7a18f2ab 48%,
+          #4901ffa9 100%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -141,16 +138,14 @@
         -moz-text-fill-color: transparent;
         white-space: nowrap;
         position: relative;
-        animation: typing 3.5s step-end,
-          blink-caret 600ms steps(30, end) infinite;
       }
 
       > span {
         z-index: 4;
-        font-size: 2.2rem;
+        font-size: 2rem;
         color: var(--color-text_secondary);
         transition: color 300ms ease-in-out;
-        font-weight: 700;
+        font-weight: 600;
 
         @include mq.response(xs) {
           font-size: 2.8rem;
@@ -165,7 +160,7 @@
                 font-size: 4.5rem;
 
                 @include mq.response(xl) {
-                  font-size: 5rem;
+                  font-size: 4rem;
                 }
               }
             }
@@ -175,27 +170,18 @@
     }
   }
 
-  @keyframes blink-caret {
-    from,
-    to {
-      border-color: transparent;
-    }
-    100% {
-      border-color: #5e1eff;
-    }
-  }
-
   .cv_button {
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    width: 14rem;
+    width: 9rem;
+    z-index: 99999;
     position: relative;
     transition: all 300ms ease-in-out;
     border-radius: 4px;
     background-color: var(--color-button);
-    height: 2.5rem;
+    height: 2.2rem;
     border: 1px solid rgba(119, 83, 248, 0.144);
 
     &:hover {
@@ -204,9 +190,10 @@
 
     > span {
       position: relative;
-      width: 1.75rem;
+      width: 1.5rem;
       transition: all 300ms ease-in-out;
       stroke: currentColor;
+      z-index: 2;
       color: var(--color-button_text);
       fill: currentColor;
       background-color: var(--color-button);
@@ -215,22 +202,24 @@
     > button {
       position: relative;
       outline: none;
+      z-index: 2;
       cursor: pointer;
       border: none;
       transition: all 300ms ease-in-out;
       font-weight: 700;
+      font-size: 0.85rem;
       color: var(--color-button_text);
       background-color: var(--color-button);
     }
 
     &::before {
-      content: "";
-      z-index: -1;
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
+      z-index: -99999;
       background-image: linear-gradient(
         -225deg,
         #ac32e4 0%,
@@ -246,46 +235,14 @@
       transition: opacity 500ms ease-in-out;
       opacity: 0.8;
     }
-  }
 
-  .arrows {
-    z-index: 4;
-    position: fixed;
-    cursor: pointer;
-    bottom: 3rem;
-    left: 1.5rem;
-  }
-
-  .arrows span {
-    display: block;
-    width: 0.75rem;
-    height: 0.75rem;
-    border-bottom: 2px solid var(--color-text);
-    border-right: 2px solid var(--color-text);
-    transform: rotate(45deg);
-    margin: -0.5rem;
-    animation: animate 2s infinite;
-  }
-
-  .arrows span:nth-child(2) {
-    animation-delay: -0.2s;
-  }
-
-  .arrows span:nth-child(3) {
-    animation-delay: -0.4s;
-  }
-}
-
-@keyframes animate {
-  0% {
-    opacity: 0;
-    transform: rotate(45deg) translate(-20px, -20px);
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(45deg) translate(20px, 20px);
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      background-color: var(--color-button);
+      border: 1px solid rgba(119, 83, 248, 0);
+    }
   }
 }

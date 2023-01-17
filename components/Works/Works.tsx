@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import works from "../../data/works_data"
-import styles from "./Works.module.scss"
-import { AnimatePresence, motion } from "framer-motion"
-import Link from "next/link"
-import { wrap } from "popmotion"
-import Img from "next/image"
-import { FiGithub, FiExternalLink } from "react-icons/fi"
+import React, { useState } from 'react'
+import works from '../../data/works_data'
+import styles from './Works.module.scss'
+import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
+import { wrap } from 'popmotion'
+import Img from 'next/image'
+import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
 const works_title_variants = {
   initial: { scale: 0, opacity: 0 },
@@ -44,7 +44,7 @@ const item_info_wrapper = {
     transition: {
       duration: 0,
       delay: 0,
-      when: "beforeChildren",
+      when: 'beforeChildren',
       staggerChildren: 0.2
     }
   }
@@ -60,8 +60,8 @@ const item_info_variants = {
     x: 0,
     transition: {
       duration: 0.5,
-      type: "tween",
-      ease: "easeInOut"
+      type: 'tween',
+      ease: 'easeInOut'
     }
   }
 }
@@ -71,7 +71,7 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity
 }
 
-const Works = () => {
+const Works = ({ sectionRefs }) => {
   const [[card, direction], setPage] = useState([0, 0])
 
   const cardIndex = wrap(0, works.length, card)
@@ -81,32 +81,39 @@ const Works = () => {
   }
 
   return (
-    <div /* id="works"  */ className="section fp-noscroll">
+    <div
+      id='works'
+      ref={sectionRefs[3]}
+      className='section'
+    >
       <div className={`${styles.works_container}`}>
         <motion.span
           viewport={{ once: true }}
-          initial="initial"
-          whileInView="inView"
+          initial='initial'
+          whileInView='inView'
           variants={works_title_variants}
-          transition={{ duration: 1, type: "tween" }}
+          transition={{ duration: 1, type: 'tween' }}
         >
           Works
         </motion.span>
 
         <div className={styles.works_wrapper}>
-          <AnimatePresence initial={false} custom={direction}>
+          <AnimatePresence
+            initial={false}
+            custom={direction}
+          >
             <motion.div
               key={card}
               custom={direction}
               variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
+              initial='enter'
+              animate='center'
+              exit='exit'
               transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
+                x: { type: 'spring', stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 }
               }}
-              drag="x"
+              drag='x'
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={1}
               onDragEnd={(e, { offset, velocity }) => {
@@ -121,9 +128,9 @@ const Works = () => {
               className={styles.work_card}
             >
               <motion.div
-                initial="hidden"
+                initial='hidden'
                 custom={direction}
-                whileInView="visible"
+                whileInView='visible'
                 variants={item_info_wrapper}
                 className={styles.item_info}
               >
@@ -132,7 +139,10 @@ const Works = () => {
                   custom={direction}
                   className={styles.item_image_wrapper}
                 >
-                  <Img alt="work_img" src={works[cardIndex].imgSrc} />
+                  <Img
+                    alt='work_img'
+                    src={works[cardIndex].imgSrc}
+                  />
                 </motion.div>
                 <motion.span
                   className={styles.work_title}
@@ -155,15 +165,15 @@ const Works = () => {
                 >
                   <a
                     href={works[cardIndex].website_href}
-                    target="_blank"
-                    rel="noreferrer"
+                    target='_blank'
+                    rel='noreferrer'
                   >
                     <FiExternalLink />
                   </a>
                   <a
                     href={works[cardIndex].git_href}
-                    target="_blank"
-                    rel="noreferrer"
+                    target='_blank'
+                    rel='noreferrer'
                   >
                     <FiGithub />
                   </a>
@@ -192,7 +202,7 @@ const Works = () => {
               />
             ))}
           </div>
-          <Link href="https://github.com/JavadAg">{"--> Explore more"}</Link>
+          <Link href='https://github.com/JavadAg'>{'--> Explore more'}</Link>
         </div>
       </div>
     </div>
