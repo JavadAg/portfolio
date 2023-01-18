@@ -1,16 +1,18 @@
-import React, { createRef, useRef } from 'react'
+import React, { MutableRefObject } from 'react'
 import styles from './Navbar.module.scss'
 import { motion } from 'framer-motion'
-import { Item } from '../../../types/navmenu.types'
-import ScrollSpy from 'react-scrollspy-navigation'
 import { Scrollspy } from '@makotot/ghostui'
 
-interface IProps {
-  itemIds: Item[]
-  sectionRefs: any
-}
-
-const Navbar: React.FC<IProps> = ({ itemIds, sectionRefs }) => {
+const Navbar = ({
+  itemIds,
+  sectionRefs
+}: {
+  itemIds: {
+    id: string
+    link: string
+  }[]
+  sectionRefs: MutableRefObject<HTMLDivElement>[]
+}) => {
   const list = {
     initial: { opacity: 0 },
     inView: {
@@ -30,7 +32,7 @@ const Navbar: React.FC<IProps> = ({ itemIds, sectionRefs }) => {
   }
 
   return (
-    <div
+    <motion.div
       id='navbar'
       className={styles.navbar_container}
     >
@@ -43,9 +45,11 @@ const Navbar: React.FC<IProps> = ({ itemIds, sectionRefs }) => {
             animate='inView'
             className={styles.navbar_wrapper}
           >
-            {itemIds.map((item: Item, i: number) => {
+            {itemIds.map((item, i: number) => {
               return (
-                <li
+                <motion.li
+                  variants={items}
+                  transition={{ duration: 0.5, type: 'tween' }}
                   key={item.id}
                   className={
                     currentElementIndexInViewport === i
@@ -54,14 +58,14 @@ const Navbar: React.FC<IProps> = ({ itemIds, sectionRefs }) => {
                   }
                 >
                   <a href={item.link}>{item.id}</a>
-                </li>
+                </motion.li>
               )
             })}
           </motion.ul>
         )}
       </Scrollspy>
       <motion.div />
-    </div>
+    </motion.div>
   )
 }
 

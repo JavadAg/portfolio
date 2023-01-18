@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import About from '../components/About/About'
 import Contact from '../components/Contact/Contact'
+import Footer from '../components/Footer/Footer'
 import Hero from '../components/Hero/Hero'
 import Layout from '../components/Layout/Layout'
 import Skills from '../components/Skills/Skills'
@@ -26,6 +27,7 @@ export default function HomePage() {
         <Skills sectionRefs={sectionRefs} />
         <Works sectionRefs={sectionRefs} />
         <Contact sectionRefs={sectionRefs} />
+        <Footer />
       </main>
     </Layout>
   )

@@ -1,18 +1,10 @@
-import React from 'react'
+import React, { MutableRefObject } from 'react'
 import styles from './Header.module.scss'
 import DarkmodeToggle from './DarkmodeToggle/DarkmodeToggle'
 import Logo from './Logo/Logo'
 import SideMenu from './SideMenu/SideMenu'
 
-const itemIds = [
-  { id: 'Home', link: '#home' },
-  { id: 'About', link: '#about' },
-  { id: 'Skills', link: '#skills' },
-  { id: 'Works', link: '#works' },
-  { id: 'Contact', link: '#contact' }
-]
-
-const Header = ({ sectionRefs }) => {
+const Header = ({ itemIds }: { itemIds: { id: string; link: string }[] }) => {
   return (
     <header
       id='header'

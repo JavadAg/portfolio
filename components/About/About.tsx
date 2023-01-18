@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MutableRefObject } from 'react'
 import styles from './About.module.scss'
 import Image from 'next/image'
 import aboutPic from '../../public/my_photo.jpg'
@@ -19,7 +19,11 @@ const my_photo_variants = {
   inView: { x: 0, opacity: 1 }
 }
 
-const About = ({ sectionRefs }) => {
+const About = ({
+  sectionRefs
+}: {
+  sectionRefs: MutableRefObject<HTMLDivElement>[]
+}) => {
   return (
     <motion.div
       id='about'

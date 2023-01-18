@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MutableRefObject } from 'react'
 import ReactQuery_logo from '../../public/assets/skills/logo1.svg'
 import NextJS_logo from '../../public/assets/skills/logo2.svg'
 import TailwindCSS_logo from '../../public/assets/skills/logo3.svg'
@@ -33,19 +33,22 @@ const skill_icons_variantss = {
     opacity: 0,
     scale: 0
   },
-  visible: (custom) => ({
+  visible: (custom: number) => ({
     opacity: [0, 0.1, 0.3, 1],
     scale: 1,
     transition: {
       delay: custom,
-      duration: 0.5,
-      type: 'tween',
-      ease: 'easeInOut'
+      duration: 1,
+      type: 'tween'
     }
   })
 }
 
-const Skills = ({ sectionRefs }: any) => {
+const Skills = ({
+  sectionRefs
+}: {
+  sectionRefs: MutableRefObject<HTMLDivElement>[]
+}) => {
   return (
     <motion.div
       id='skills'
@@ -161,7 +164,6 @@ const Skills = ({ sectionRefs }: any) => {
           </motion.div>
         </motion.div>
       </div>
-      <div></div>
     </motion.div>
   )
 }

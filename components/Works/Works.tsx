@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
+import React, { MutableRefObject, useState } from 'react'
 import works from '../../data/works_data'
 import styles from './Works.module.scss'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { wrap } from 'popmotion'
-import Img from 'next/image'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
 const works_title_variants = {
   initial: { scale: 0, opacity: 0 },
   inView: { scale: 1, opacity: 1 }
+}
+
+const container_variants = {
+  initial: { opacity: 1 },
+  inView: { opacity: 1 }
+}
+
+const work_wrapper_variants = {
+  initial: { y: 1000, opacity: 0 },
+  inView: { y: 0, opacity: 1 }
 }
 
 const variants = {
@@ -71,7 +80,11 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity
 }
 
-const Works = ({ sectionRefs }) => {
+const Works = ({
+  sectionRefs
+}: {
+  sectionRefs: MutableRefObject<HTMLDivElement>[]
+}) => {
   const [[card, direction], setPage] = useState([0, 0])
 
   const cardIndex = wrap(0, works.length, card)
@@ -81,131 +94,127 @@ const Works = ({ sectionRefs }) => {
   }
 
   return (
-    <div
+    <motion.div
       id='works'
-      ref={sectionRefs[3]}
-      className='section'
+      viewport={{ once: true }}
+      initial='initial'
+      whileInView='inView'
+      variants={container_variants}
+      className={`${styles.works_container}`}
     >
-      <div className={`${styles.works_container}`}>
-        <motion.span
-          viewport={{ once: true }}
-          initial='initial'
-          whileInView='inView'
-          variants={works_title_variants}
-          transition={{ duration: 1, type: 'tween' }}
+      <motion.span
+        viewport={{ once: true }}
+        initial='initial'
+        whileInView='inView'
+        variants={works_title_variants}
+        transition={{ duration: 1, type: 'tween' }}
+      >
+        Works
+      </motion.span>
+      <motion.div
+        variants={work_wrapper_variants}
+        viewport={{ once: true }}
+        transition={{ duration: 1, type: 'tween' }}
+        ref={sectionRefs[3]}
+        className={styles.works_wrapper}
+      >
+        <AnimatePresence
+          initial={false}
+          custom={direction}
         >
-          Works
-        </motion.span>
-
-        <div className={styles.works_wrapper}>
-          <AnimatePresence
-            initial={false}
+          <motion.div
+            key={card}
             custom={direction}
+            variants={variants}
+            initial='enter'
+            animate='center'
+            exit='exit'
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 }
+            }}
+            drag='x'
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x)
+
+              if (swipe < -swipeConfidenceThreshold) {
+                cardIndex !== works.length - 1 && paginate(1)
+              } else if (swipe > swipeConfidenceThreshold) {
+                cardIndex !== 0 && paginate(-1)
+              }
+            }}
+            className={styles.work_card}
           >
             <motion.div
-              key={card}
+              initial='hidden'
               custom={direction}
-              variants={variants}
-              initial='enter'
-              animate='center'
-              exit='exit'
-              transition={{
-                x: { type: 'spring', stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
-              }}
-              drag='x'
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={1}
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = swipePower(offset.x, velocity.x)
-
-                if (swipe < -swipeConfidenceThreshold) {
-                  paginate(1)
-                } else if (swipe > swipeConfidenceThreshold) {
-                  paginate(-1)
-                }
-              }}
-              className={styles.work_card}
+              whileInView='visible'
+              variants={item_info_wrapper}
+              className={styles.item_info}
             >
-              <motion.div
-                initial='hidden'
+              <motion.span
+                className={styles.work_title}
                 custom={direction}
-                whileInView='visible'
-                variants={item_info_wrapper}
-                className={styles.item_info}
+                variants={item_info_variants}
               >
-                <motion.div
-                  variants={item_info_variants}
-                  custom={direction}
-                  className={styles.item_image_wrapper}
+                {works[cardIndex].title}
+              </motion.span>
+              <motion.span
+                className={styles.work_desc}
+                custom={direction}
+                variants={item_info_variants}
+              >
+                {works[cardIndex].description}
+              </motion.span>
+              <motion.div
+                variants={item_info_variants}
+                custom={direction}
+                className={styles.work_links}
+              >
+                <a
+                  href={works[cardIndex].website_href}
+                  target='_blank'
+                  rel='noreferrer'
                 >
-                  <Img
-                    alt='work_img'
-                    src={works[cardIndex].imgSrc}
-                  />
-                </motion.div>
-                <motion.span
-                  className={styles.work_title}
-                  custom={direction}
-                  variants={item_info_variants}
+                  <FiExternalLink />
+                </a>
+                <a
+                  href={works[cardIndex].git_href}
+                  target='_blank'
+                  rel='noreferrer'
                 >
-                  {works[cardIndex].title}
-                </motion.span>
-                <motion.span
-                  className={styles.work_desc}
-                  custom={direction}
-                  variants={item_info_variants}
-                >
-                  {works[cardIndex].description}
-                </motion.span>
-                <motion.div
-                  variants={item_info_variants}
-                  custom={direction}
-                  className={styles.work_links}
-                >
-                  <a
-                    href={works[cardIndex].website_href}
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <FiExternalLink />
-                  </a>
-                  <a
-                    href={works[cardIndex].git_href}
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <FiGithub />
-                  </a>
-                </motion.div>
-                <motion.div
-                  className={styles.work_techs}
-                  custom={direction}
-                  variants={item_info_variants}
-                >
-                  {works[cardIndex].techs.map((tech, index) => (
-                    <span key={index}>{tech}</span>
-                  ))}
-                </motion.div>
+                  <FiGithub />
+                </a>
+              </motion.div>
+              <motion.div
+                className={styles.work_techs}
+                custom={direction}
+                variants={item_info_variants}
+              >
+                {works[cardIndex].techs.map((tech, index) => (
+                  <span key={index}>{tech}</span>
+                ))}
               </motion.div>
             </motion.div>
-          </AnimatePresence>
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
+      <div className={styles.works_bottom}>
+        <div className={styles.card_arrow}>
+          {works.map((item, index) => (
+            <div
+              key={item.id}
+              className={`${card === index ? styles.active_dot : undefined} ${
+                styles.dot
+              }`}
+            />
+          ))}
         </div>
-        <div className={styles.works_bottom}>
-          <div className={styles.card_arrow}>
-            {works.map((item, index) => (
-              <div
-                key={item.id}
-                className={`${card === index ? styles.active_dot : undefined} ${
-                  styles.dot
-                }`}
-              />
-            ))}
-          </div>
-          <Link href='https://github.com/JavadAg'>{'--> Explore more'}</Link>
-        </div>
+        <Link href='https://github.com/JavadAg'>{'--> Explore more'}</Link>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

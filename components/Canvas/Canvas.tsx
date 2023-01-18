@@ -1,12 +1,38 @@
-import { useEffect, useRef } from "react"
-import {
-  ColorVars,
-  Nodes,
-  Points,
-  PointValues,
-  Positions
-} from "../../types/canvas.types"
-import styles from "./Canvas.module.scss"
+import { useEffect, useRef } from 'react'
+import styles from './Canvas.module.scss'
+
+interface ColorVars {
+  phase: number
+  amplitude: number
+  frequency: number
+  offset: number
+}
+
+interface Positions {
+  x?: number
+  y?: number
+}
+
+interface Nodes {
+  x?: number
+  y?: number
+  vy?: number
+  vx?: number
+}
+
+interface Points {
+  spring?: number
+  friction?: number
+  nodes?: Nodes[]
+}
+
+interface PointValues {
+  friction: number
+  trails: number
+  size: number
+  dampening: number
+  tension: number
+}
 
 const Canvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -29,12 +55,12 @@ const Canvas = () => {
     }
 
   useEffect(() => {
-    ctx = canvasRef.current.getContext("2d")
-    document.addEventListener("mousemove", onMousemove)
-    document.addEventListener("touchstart", onMousemove)
-    document.body.addEventListener("orientationchange", resizeCanvas)
-    window.addEventListener("resize", resizeCanvas)
-    window.addEventListener("focus", () => {})
+    ctx = canvasRef.current.getContext('2d')
+    document.addEventListener('mousemove', onMousemove)
+    document.addEventListener('touchstart', onMousemove)
+    document.body.addEventListener('orientationchange', resizeCanvas)
+    window.addEventListener('resize', resizeCanvas)
+    window.addEventListener('focus', () => {})
     resizeCanvas()
   }, [])
 
@@ -123,7 +149,7 @@ const Canvas = () => {
       }
     }
     function updatePos(e: MouseEvent | TouchEvent) {
-      if (typeof TouchEvent !== "undefined" && e instanceof TouchEvent) {
+      if (typeof TouchEvent !== 'undefined' && e instanceof TouchEvent) {
         pos.x = e.touches[0].clientX
         pos.y = e.touches[0].clientY
       } else if (e instanceof MouseEvent) {
@@ -135,22 +161,22 @@ const Canvas = () => {
       1 == e.touches.length &&
         ((pos.x = e.touches[0].clientX), (pos.y = e.touches[0].clientY))
     }
-    document.removeEventListener("mousemove", onMousemove),
-      document.removeEventListener("touchstart", onMousemove),
-      document.addEventListener("mousemove", updatePos),
-      document.addEventListener("touchmove", updatePos),
-      document.addEventListener("touchstart", touch),
+    document.removeEventListener('mousemove', onMousemove),
+      document.removeEventListener('touchstart', onMousemove),
+      document.addEventListener('mousemove', updatePos),
+      document.addEventListener('touchmove', updatePos),
+      document.addEventListener('touchstart', touch),
       updatePos(e),
       addPoint(),
       render()
   }
 
   const render = () => {
-    ctx.globalCompositeOperation = "source-over"
+    ctx.globalCompositeOperation = 'source-over'
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    ctx.globalCompositeOperation = "lighter"
+    ctx.globalCompositeOperation = 'lighter'
     ctx.strokeStyle =
-      "hsla(" + Math.round(getColor(colorVars)) + ",90%,50%,0.10)"
+      'hsla(' + Math.round(getColor(colorVars)) + ',90%,50%,0.10)'
     ctx.lineWidth = 1
     for (var point: Points, t = 0; t < pointValues.trails; t++) {
       point = updatePoints(points[t])
@@ -162,7 +188,11 @@ const Canvas = () => {
 
   return (
     <>
-      <canvas id="canvas" ref={canvasRef} className={styles.canvas}></canvas>
+      <canvas
+        id='canvas'
+        ref={canvasRef}
+        className={styles.canvas}
+      ></canvas>
     </>
   )
 }

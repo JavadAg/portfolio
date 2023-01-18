@@ -12,7 +12,6 @@ const DarkmodeToggle = () => {
   const pathLengthSun = useTransform(scaleSun, [0.6, 1], [0, 1])
 
   useEffect(() => setMounted(true), [])
-
   if (!mounted) return null
 
   const duration = 0.7

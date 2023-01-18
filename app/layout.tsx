@@ -1,11 +1,9 @@
 'use client'
 
-import { Heebo, League_Spartan } from '@next/font/google'
-import { ThemeProvider } from 'next-themes'
+import { Heebo } from '@next/font/google'
 import ThemeProviderProvider from '../context/ThemeContext'
 import '../styles/globals.scss'
 
-const league_spartan = League_Spartan({ subsets: ['latin'] })
 const heebo = Heebo({ subsets: ['latin'] })
 
 export default function RootLayout({

@@ -176,13 +176,13 @@
     align-items: center;
     cursor: pointer;
     width: 9rem;
-    z-index: 99999;
     position: relative;
     transition: all 300ms ease-in-out;
     border-radius: 4px;
     background-color: var(--color-button);
     height: 2.2rem;
     border: 1px solid rgba(119, 83, 248, 0.144);
+    transition: all 300ms ease-in-out;
 
     &:hover {
       border: 1px solid rgba(119, 83, 248, 0.699);
@@ -240,6 +240,7 @@
       content: '';
       position: absolute;
       inset: 0;
+      transition: all 300ms ease-in-out;
       border-radius: 4px;
       background-color: var(--color-button);
       border: 1px solid rgba(119, 83, 248, 0);

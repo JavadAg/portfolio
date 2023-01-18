@@ -4,8 +4,10 @@ import { motion } from 'framer-motion'
 
 const Logo = () => {
   return (
-    <a
+    <motion.a
       className={styles.logo_wrapper}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       href='#home'
     >
       <svg
@@ -45,7 +47,7 @@ const Logo = () => {
           y2='24.3'
         />
       </svg>
-    </a>
+    </motion.a>
   )
 }
 

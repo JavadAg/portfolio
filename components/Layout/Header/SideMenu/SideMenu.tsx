@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './SideMenu.module.scss'
 import { motion, useCycle } from 'framer-motion'
-import { Item } from '../../../../types/navmenu.types'
 import { SideMenuToggle } from './SideMenuToggle/SideMenuToggle'
 
 const sidemenu = {
@@ -48,16 +47,8 @@ const variants1 = {
   }
 }
 
-interface IProps {
-  itemIds: Item[]
-}
-
-const SideMenu: React.FC<IProps> = ({ itemIds }) => {
+const SideMenu = ({ itemIds }: { itemIds: { id: string; link: string }[] }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
-
-  const navHandler = (item: Item) => {
-    toggleOpen()
-  }
 
   return (
     <>
@@ -82,7 +73,7 @@ const SideMenu: React.FC<IProps> = ({ itemIds }) => {
               <motion.li
                 key={item.id}
                 data-menuanchor={item.link}
-                onClick={() => navHandler(item)}
+                onClick={() => toggleOpen()}
                 variants={variants1}
                 whileHover={{ scale: 1.1 }}
               >

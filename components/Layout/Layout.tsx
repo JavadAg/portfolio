@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { MutableRefObject } from 'react'
 import dynamic from 'next/dynamic'
 import styles from './Layout.module.scss'
 import Header from './Header/Header'
 import ContactSidebar from './ContactSidebar/ContactSidebar'
 import Navbar from './Navbar/Navbar'
 
-const Layout = ({ children, sectionRefs }) => {
+const Layout = ({
+  children,
+  sectionRefs
+}: {
+  children: JSX.Element
+  sectionRefs: MutableRefObject<HTMLDivElement>[]
+}) => {
   const Canvas = dynamic(() => import('../Canvas/Canvas'), {
     ssr: false
   })
@@ -20,7 +26,7 @@ const Layout = ({ children, sectionRefs }) => {
 
   return (
     <div className={styles.layout}>
-      <Header sectionRefs={sectionRefs} />
+      <Header itemIds={itemIds} />
       <ContactSidebar />
       <Canvas />
       <Navbar
