@@ -1,6 +1,6 @@
 {
-  "name": "myportfolio1",
-  "version": "0.1.0",
+  "name": "javadaghebati",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fullpage/react-fullpage": "^0.1.31",
     "@makotot/ghostui": "^2.0.0",
     "@next/font": "^13.1.2",
     "@svgr/webpack": "^6.5.1",
@@ -19,14 +18,11 @@
     "popmotion": "^11.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1",
-    "react-scroll": "^1.8.9",
-    "react-scrollspy-navigation": "^1.0.3"
+    "react-icons": "^4.7.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
-    "@types/react-scroll": "^1.8.6",
     "eslint": "8.32.0",
     "eslint-config-next": "^13.1.2",
     "sass": "^1.57.1",
