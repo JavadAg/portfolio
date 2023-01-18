@@ -120,10 +120,10 @@ const Hero = ({
 
       <motion.a
         variants={{
-          initial: { y: 400, opacity: 0 },
-          inView: { y: 0, opacity: 1 }
+          initial: { x: -400, opacity: 0 },
+          inView: { x: 0, opacity: 1 }
         }}
-        transition={{ type: 'tween', duration: 0.8 }}
+        transition={{ type: 'tween', duration: 1, ease: 'easeInOut' }}
         initial='initial'
         animate='inView'
         href='https://www.dropbox.com/s/yzks6yx4wvfcgyq/%D8%B1%D8%B2%D9%88%D9%85%D9%87%20%D8%AC%D9%88%D8%A7%D8%AF%20%D8%B9%D8%A7%D9%82%D8%A8%D8%AA%DB%8C%20%28Frontend-Developer%29.pdf?dl=0'

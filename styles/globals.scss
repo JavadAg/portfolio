@@ -1,26 +1,10 @@
 html {
   scroll-behavior: smooth;
-  -moz-tab-size: 4;
-  tab-size: 4;
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-
   ::-webkit-scrollbar {
     height: 0rem;
     width: 0rem;
   }
-
-  ::-webkit-scrollbar-track {
-    background: var(--color-text);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #700fe6;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #6900e9;
-  }
+  overflow-x: hidden;
 }
 
 body {
@@ -29,6 +13,7 @@ body {
   font-family: 'Heebo', sans-serif;
   position: relative;
   -ms-overflow-style: none;
+  overflow-x: hidden;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;

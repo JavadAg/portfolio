@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './SideMenu.module.scss'
 import { motion, useCycle } from 'framer-motion'
 import { SideMenuToggle } from './SideMenuToggle/SideMenuToggle'
@@ -49,6 +49,12 @@ const variants1 = {
 
 const SideMenu = ({ itemIds }: { itemIds: { id: string; link: string }[] }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
+
+  useEffect(() => {
+    isOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'unset')
+  }, [isOpen])
 
   return (
     <>

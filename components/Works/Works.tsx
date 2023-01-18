@@ -1,7 +1,7 @@
 import React, { MutableRefObject, useState } from 'react'
 import works from '../../data/works_data'
 import styles from './Works.module.scss'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import Link from 'next/link'
 import { wrap } from 'popmotion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
@@ -122,83 +122,84 @@ const Works = ({
           initial={false}
           custom={direction}
         >
-          <motion.div
-            key={card}
-            custom={direction}
-            variants={variants}
-            initial='enter'
-            animate='center'
-            exit='exit'
-            transition={{
-              x: { type: 'spring', stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 }
-            }}
-            drag='x'
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={1}
-            onDragEnd={(e, { offset, velocity }) => {
-              const swipe = swipePower(offset.x, velocity.x)
-
-              if (swipe < -swipeConfidenceThreshold) {
-                cardIndex !== works.length - 1 && paginate(1)
-              } else if (swipe > swipeConfidenceThreshold) {
-                cardIndex !== 0 && paginate(-1)
-              }
-            }}
-            className={styles.work_card}
-          >
+          <LayoutGroup>
             <motion.div
-              initial='hidden'
+              key={card}
               custom={direction}
-              whileInView='visible'
-              variants={item_info_wrapper}
-              className={styles.item_info}
+              variants={variants}
+              initial='enter'
+              animate='center'
+              exit='exit'
+              transition={{
+                x: { type: 'spring', stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 }
+              }}
+              drag='x'
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = swipePower(offset.x, velocity.x)
+                if (swipe < -swipeConfidenceThreshold) {
+                  cardIndex !== works.length - 1 && paginate(1)
+                } else if (swipe > swipeConfidenceThreshold) {
+                  cardIndex !== 0 && paginate(-1)
+                }
+              }}
+              className={styles.work_card}
             >
-              <motion.span
-                className={styles.work_title}
-                custom={direction}
-                variants={item_info_variants}
-              >
-                {works[cardIndex].title}
-              </motion.span>
-              <motion.span
-                className={styles.work_desc}
-                custom={direction}
-                variants={item_info_variants}
-              >
-                {works[cardIndex].description}
-              </motion.span>
               <motion.div
-                variants={item_info_variants}
+                initial='hidden'
                 custom={direction}
-                className={styles.work_links}
+                whileInView='visible'
+                variants={item_info_wrapper}
+                className={styles.item_info}
               >
-                <a
-                  href={works[cardIndex].website_href}
-                  target='_blank'
-                  rel='noreferrer'
+                <motion.span
+                  className={styles.work_title}
+                  custom={direction}
+                  variants={item_info_variants}
                 >
-                  <FiExternalLink />
-                </a>
-                <a
-                  href={works[cardIndex].git_href}
-                  target='_blank'
-                  rel='noreferrer'
+                  {works[cardIndex].title}
+                </motion.span>
+                <motion.span
+                  className={styles.work_desc}
+                  custom={direction}
+                  variants={item_info_variants}
                 >
-                  <FiGithub />
-                </a>
-              </motion.div>
-              <motion.div
-                className={styles.work_techs}
-                custom={direction}
-                variants={item_info_variants}
-              >
-                {works[cardIndex].techs.map((tech, index) => (
-                  <span key={index}>{tech}</span>
-                ))}
+                  {works[cardIndex].description}
+                </motion.span>
+                <motion.div
+                  variants={item_info_variants}
+                  custom={direction}
+                  className={styles.work_links}
+                >
+                  <a
+                    href={works[cardIndex].website_href}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    <FiExternalLink />
+                  </a>
+                  <a
+                    href={works[cardIndex].git_href}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    <FiGithub />
+                  </a>
+                </motion.div>
+                <motion.div
+                  className={styles.work_techs}
+                  custom={direction}
+                  variants={item_info_variants}
+                >
+                  {works[cardIndex].techs.map((tech, index) => (
+                    <span key={index}>{tech}</span>
+                  ))}
+                </motion.div>
               </motion.div>
             </motion.div>
-          </motion.div>
+          </LayoutGroup>
         </AnimatePresence>
       </motion.div>
       <div className={styles.works_bottom}>
