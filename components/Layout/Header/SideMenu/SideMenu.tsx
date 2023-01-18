@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import styles from './SideMenu.module.scss'
 import { motion, useCycle } from 'framer-motion'
 import { SideMenuToggle } from './SideMenuToggle/SideMenuToggle'
+import disableScroll from 'disable-scroll'
 
 const sidemenu = {
   open: (height = 1000) => ({
@@ -51,9 +52,7 @@ const SideMenu = ({ itemIds }: { itemIds: { id: string; link: string }[] }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
 
   useEffect(() => {
-    isOpen
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = 'unset')
+    isOpen ? disableScroll.on() : disableScroll.off()
   }, [isOpen])
 
   return (
